@@ -2,6 +2,7 @@
 #include <QKeyEvent>
 #include <QGraphicsScene>
 #include <QGraphicsScene>
+#include <QDebug>
 
 #include "Player.h"
 #include "bullet.h"
@@ -9,10 +10,27 @@
 #include "enemy.h"
 
 Player::Player(QGraphicsItem *parent): QGraphicsPixmapItem(parent){
+    this->installEventFilter(this);
+
     bulletSound = new QMediaPlayer(this);
     bulletSound->setMedia(QUrl("qrc:/sounds/Sounds/laser.mp3"));
 
     setPixmap(QPixmap(":/pictures/Images/player.png"));
+}
+
+
+void Player::fire(){
+    Bullet * bullet = new Bullet();
+    bullet->setPos(x() + pixmap().width() / 2 - 5, y() - pixmap().height() / 2);
+    scene()->addItem(bullet);
+
+    //Remettre le son à 0 s'il est joué.
+    if(bulletSound->state() == QMediaPlayer::PlayingState) {
+        bulletSound->setPosition(0);
+    }
+    else if (bulletSound->state() == QMediaPlayer::StoppedState) {
+     bulletSound->play();
+    }
 }
 
 void Player::keyPressEvent(QKeyEvent *event){
@@ -37,17 +55,7 @@ void Player::keyPressEvent(QKeyEvent *event){
 
     //Projectile.
     if(event->key() == Qt::Key_Space) {
-        Bullet * bullet = new Bullet();
-        bullet->setPos(x() + pixmap().width() / 2 - 5, y() - pixmap().height() / 2);
-        scene()->addItem(bullet);
-
-        //Remettre le son à 0 s'il est joué.
-        if(bulletSound->state() == QMediaPlayer::PlayingState) {
-            bulletSound->setPosition(0);
-        }
-        else if (bulletSound->state() == QMediaPlayer::StoppedState) {
-         bulletSound->play();
-        }
+        fire();
     }
 }
 
