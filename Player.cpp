@@ -9,6 +9,7 @@
 #include "constants.h"
 #include "enemy.h"
 
+
 Player::Player(QGraphicsItem *parent): QGraphicsPixmapItem(parent){
     this->installEventFilter(this);
 
@@ -38,19 +39,19 @@ void Player::keyPressEvent(QKeyEvent *event){
     //Mouvements du joueur.
     if(event->key() == Qt::Key_Left) {
         if(pos().x() > 0)
-            setPos(x()-10,y());
+            setPos(x()- playerStats.playerSpeed,y());
     }
     else if (event->key() == Qt::Key_Right) {
         if(pos().x() + pixmap().width() < width_scene)
-            setPos(x()+10,y());
+            setPos(x()+ playerStats.playerSpeed,y());
     }
     else if (event->key() == Qt::Key_Up) {
         if(pos().y() > 0)
-            setPos(x(),y()-10);
+            setPos(x(),y()- playerStats.playerSpeed);
     }
     else if (event->key() == Qt::Key_Down) {
         if(pos().y() + pixmap().height() < height_scene)
-            setPos(x(),y()+10);
+            setPos(x(),y()+ playerStats.playerSpeed);
     }
 
     //Projectile.

@@ -7,7 +7,9 @@
 #include <QMediaPlayer>
 #include <QTimer>
 
-class Player : public QObject, public QGraphicsPixmapItem{
+#include "playerstats.h"
+
+class Player : public QObject, public QGraphicsPixmapItem {
     Q_OBJECT
 public:
     Player(QGraphicsItem *parent = 0);
@@ -15,6 +17,8 @@ public:
     void keyPressEvent(QKeyEvent * event);
 private:
     QMediaPlayer * bulletSound;
+
+    PlayerStats playerStats;
 public slots:
     void spawn();
 };

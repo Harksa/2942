@@ -41,7 +41,8 @@ HEADERS += \
     constants.h \
     game.h \
     score.h \
-    health.h
+    health.h \
+    playerstats.h
 
 RESOURCES += \
     ressources.qrc

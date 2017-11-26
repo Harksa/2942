@@ -32,7 +32,6 @@ Game::Game(QWidget *parent){
     player->setFlag(QGraphicsItem::ItemIsFocusable);
     player->setFocus();
 
-
     //Création du score.
     score = new Score();
     scene->addItem(score);
