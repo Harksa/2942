@@ -11,7 +11,6 @@
 
 #include "Enemy.h"
 #include "constants.h"
-#include "mediaplayer.h"
 
 Game::Game(QWidget *parent){
     //Création de la scène.
