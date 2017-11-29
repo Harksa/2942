@@ -6,6 +6,7 @@
 class PlayerStats {
 public:
     float playerSpeed = 0.75f;
+    float fireDelay = 320;
 };
 
 #endif // PLAYERSTATS_H

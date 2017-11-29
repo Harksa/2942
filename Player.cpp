@@ -26,10 +26,17 @@ Player::Player(QGraphicsItem *parent): QGraphicsPixmapItem(parent){
     QTimer * movements = new QTimer;
     connect(movements, SIGNAL(timeout()), this, SLOT(KeysProcessing()));
     movements->start(2);
+
+    QTimer * fire = new QTimer;
+    connect(fire, SIGNAL(timeout()), this, SLOT(makeFirePossible()));
+    fire->start(playerStats.fireDelay);
+
+    canFire = true;
 }
 
 
 void Player::fire(){
+    canFire = false;
     Bullet * bullet = new Bullet();
     bullet->setPos(x() + pixmap().width() / 2 - 5, y() - pixmap().height() / 2);
     scene()->addItem(bullet);
@@ -39,7 +46,7 @@ void Player::fire(){
         bulletSound->setPosition(0);
     }
     else if (bulletSound->state() == QMediaPlayer::StoppedState) {
-     bulletSound->play();
+        bulletSound->play();
     }
 }
 
@@ -53,6 +60,7 @@ void Player::keyReleaseEvent(QKeyEvent *event){
 
 void Player::KeysProcessing(){
 
+    //Mouvements.
     if(keysPressed.contains(Qt::Key_Left)) {
         if(pos().x() > 0)
             posX -= playerStats.playerSpeed;
@@ -70,12 +78,17 @@ void Player::KeysProcessing(){
             posY += playerStats.playerSpeed;
     }
 
-    setPos(posX, posY);
-
-    //Projectile.
+    //Projectiles.
     if(keysPressed.contains(Qt::Key_Space)) {
-        fire();
+        if(canFire)
+            fire();
     }
+
+    setPos(posX, posY);
+}
+
+void Player::makeFirePossible() {
+    canFire = true;
 }
 
 void Player::spawn() {

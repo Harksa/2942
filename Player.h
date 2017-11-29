@@ -17,18 +17,18 @@ public:
     void keyPressEvent(QKeyEvent * event);
     void keyReleaseEvent(QKeyEvent *event);
 
-
 private:
-    QMediaPlayer * bulletSound;
-    QSet<int> keysPressed;
-    bool m_bFirstrealase;
+    float posX, posY;               //Position du joueur.
+    PlayerStats playerStats;        //Stats du vaisseau du joueur.
+    QMediaPlayer * bulletSound;     //Le mediaplayer du tir.
+    QSet<int> keysPressed;          //Tableau de clé qui sera utilisé pour la gestion des touches pressées par le joueur.
 
-    float posX, posY;
+    bool canFire;                   //Sert à savoir si le joueur peut tirer ou non.
 
-    PlayerStats playerStats;
 public slots:
     void spawn();
     void KeysProcessing();
+    void makeFirePossible();
 };
 
 #endif // MYRECT_H
