@@ -4,6 +4,7 @@
 #include <QGraphicsView>
 #include <QWidget>
 #include <QGraphicsScene>
+#include <QMediaPlayer>
 
 #include "Player.h"
 #include "Score.h"
@@ -17,6 +18,11 @@ public:
     Player * player;
     Score * score;
     Health * health;
+
+private:
+
+public slots:
+    void restartMusic();
 
 };
 

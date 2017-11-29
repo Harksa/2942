@@ -9,7 +9,6 @@ class Bullet : public QObject, public QGraphicsPixmapItem {
     Q_OBJECT
 public:
     Bullet(QGraphicsItem *parent = 0);
-
 private:
     float bulletSpeed = 0.8f;
 public slots:

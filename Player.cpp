@@ -12,8 +12,6 @@
 
 
 Player::Player(QGraphicsItem *parent): QGraphicsPixmapItem(parent){
-    this->installEventFilter(this);
-
     bulletSound = new QMediaPlayer(this);
     bulletSound->setMedia(QUrl("qrc:/sounds/Sounds/laser.mp3"));
 
@@ -62,12 +60,16 @@ void Player::KeysProcessing(){
 
     //Mouvements.
     if(keysPressed.contains(Qt::Key_Left)) {
-        if(pos().x() > 0)
+        if(pos().x() > 0) {
+            setPixmap(QPixmap(":/pictures/Images/playerLeft.png"));
             posX -= playerStats.playerSpeed;
+        }
     }
     if (keysPressed.contains(Qt::Key_Right)) {
-        if(pos().x() + pixmap().width() < width_scene)
+        if(pos().x() + pixmap().width() < width_scene) {
+            setPixmap(QPixmap(":/pictures/Images/playerRight.png"));
             posX += playerStats.playerSpeed;
+        }
     }
     if (keysPressed.contains(Qt::Key_Up)) {
         if(pos().y() > 0)
@@ -76,6 +78,11 @@ void Player::KeysProcessing(){
     if (keysPressed.contains(Qt::Key_Down)) {
         if(pos().y() + pixmap().height() < height_scene)
             posY += playerStats.playerSpeed;
+    }
+
+    //Si le joueur ne bouge pas à gauche ou droite, remettre l'image d'origine.
+    if(!keysPressed.contains(Qt::Key_Left) && !keysPressed.contains(Qt::Key_Right)) {
+        setPixmap(QPixmap(":/pictures/Images/player.png"));
     }
 
     //Projectiles.

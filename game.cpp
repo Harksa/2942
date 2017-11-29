@@ -3,11 +3,15 @@
 #include <QGraphicsTextItem>
 #include <QFont>
 #include <QMediaPlayer>
+#include <QMediaPlaylist>
 #include <QImage>
 #include <QBrush>
+#include <QFileDialog>
+#include <iostream>
 
 #include "Enemy.h"
 #include "constants.h"
+#include "mediaplayer.h"
 
 Game::Game(QWidget *parent){
     //Création de la scène.
@@ -46,9 +50,16 @@ Game::Game(QWidget *parent){
     timer->start(2000);
 
     //Musique de background.
-    QMediaPlayer * music = new QMediaPlayer(this);
-    music->setMedia(QUrl("qrc:/musics/Musics/level1.mp3"));
+    QUrl path("qrc:/musics/Musics/level1.mp3");
+
+    QMediaPlaylist *playlist = new QMediaPlaylist();
+    playlist->addMedia(path);
+    playlist->setPlaybackMode(QMediaPlaylist::Loop);
+
+    QMediaPlayer * music = new QMediaPlayer();
+    music->setPlaylist(playlist);
     music->play();
 
     show();
 }
+
