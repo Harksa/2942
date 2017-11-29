@@ -16,16 +16,19 @@ public:
     void fire();
     void keyPressEvent(QKeyEvent * event);
     void keyReleaseEvent(QKeyEvent *event);
-    void KeysProcessing(QSet<int> keys);
+
 
 private:
     QMediaPlayer * bulletSound;
     QSet<int> keysPressed;
     bool m_bFirstrealase;
 
+    float posX, posY;
+
     PlayerStats playerStats;
 public slots:
     void spawn();
+    void KeysProcessing();
 };
 
 #endif // MYRECT_H

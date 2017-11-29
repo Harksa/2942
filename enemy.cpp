@@ -19,11 +19,11 @@ Enemy::Enemy(): QObject(), QGraphicsPixmapItem(){
 
     QTimer * timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
-    timer->start(50);
+    timer->start(5);
 }
 
 void Enemy::move(){
-    setPos(x(), y() + 5);
+    setPos(x(), y() + 0.5f);
 
     if(pos().y() + pixmap().height() > height_scene + 100) {
         game->health->decrease();

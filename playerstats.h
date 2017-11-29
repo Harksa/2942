@@ -5,7 +5,7 @@
 
 class PlayerStats {
 public:
-    float playerSpeed = 10;
+    float playerSpeed = 0.75f;
 };
 
 #endif // PLAYERSTATS_H

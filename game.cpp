@@ -25,7 +25,6 @@ Game::Game(QWidget *parent){
 
     //Création du joueur.
     player = new Player();
-    player->setPos(width_scene / 2 ,height_scene - 200);
     scene->addItem(player);
 
     //Focus sur le joueur.
