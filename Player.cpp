@@ -25,7 +25,7 @@ Player::Player(QGraphicsItem *parent): QGraphicsPixmapItem(parent){
 
     QTimer * movements = new QTimer;
     connect(movements, SIGNAL(timeout()), this, SLOT(KeysProcessing()));
-    movements->start(2);
+    movements->start(1);
 
     QTimer * fire = new QTimer;
     connect(fire, SIGNAL(timeout()), this, SLOT(makeFirePossible()));

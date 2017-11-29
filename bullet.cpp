@@ -13,7 +13,7 @@ Bullet::Bullet(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem(parent) {
 
     QTimer * timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
-    timer->start(50);
+    timer->start(1);
 }
 
 void Bullet::move() {
@@ -35,7 +35,7 @@ void Bullet::move() {
         }
     }
 
-    setPos(x(), y() - 10);
+    setPos(x(), y() - bulletSpeed);
 
     if(pos().y() < 0 - pixmap().height()) {
         scene()->removeItem(this);

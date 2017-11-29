@@ -5,7 +5,7 @@
 
 class PlayerStats {
 public:
-    float playerSpeed = 0.75f;
+    float playerSpeed = 0.45f;
     float fireDelay = 320;
 };
 
