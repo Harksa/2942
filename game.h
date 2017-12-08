@@ -7,8 +7,8 @@
 #include <QMediaPlayer>
 
 #include "Player.h"
-#include "Score.h"
-#include "Health.h"
+#include "score.h"
+#include "health.h"
 
 class Game: public QGraphicsView{
 public:
@@ -20,6 +20,7 @@ public:
     Health * health;
 
 private:
+    void mousePressEvent(QMouseEvent *event);
 
 public slots:
     void restartMusic();

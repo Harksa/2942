@@ -26,7 +26,6 @@ private:
     bool canFire;                   //Sert à savoir si le joueur peut tirer ou non.
 
 public slots:
-    void spawn();
     void KeysProcessing();
     void makeFirePossible();
 };

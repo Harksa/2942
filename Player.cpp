@@ -1,7 +1,6 @@
 #include <QDebug>
 #include <QKeyEvent>
 #include <QGraphicsScene>
-#include <QGraphicsScene>
 #include <QDebug>
 #include <QTimer>
 
@@ -96,9 +95,4 @@ void Player::KeysProcessing(){
 
 void Player::makeFirePossible() {
     canFire = true;
-}
-
-void Player::spawn() {
-    Enemy * enemy = new Enemy();
-    scene()->addItem(enemy);
 }

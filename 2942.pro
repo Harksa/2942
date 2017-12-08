@@ -32,7 +32,8 @@ SOURCES += \
     constants.cpp \
     game.cpp \
     score.cpp \
-    health.cpp
+    health.cpp \
+    spawner.cpp
 
 HEADERS += \
     bullet.h \
@@ -42,7 +43,8 @@ HEADERS += \
     game.h \
     score.h \
     health.h \
-    playerstats.h
+    playerstats.h \
+    spawner.h
 
 RESOURCES += \
     ressources.qrc

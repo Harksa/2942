@@ -1,5 +1,5 @@
 #include <QApplication>
-#include "Game.h"
+#include "game.h"
 
 /*
  * Le game est global est peut-être accédé partout.

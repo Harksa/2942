@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "game.h"
 #include <QTimer>
 #include <QGraphicsTextItem>
 #include <QFont>
@@ -7,10 +7,12 @@
 #include <QImage>
 #include <QBrush>
 #include <QFileDialog>
+#include <QMouseEvent>
 #include <iostream>
 
-#include "Enemy.h"
+#include "enemy.h"
 #include "constants.h"
+#include "spawner.h"
 
 Game::Game(QWidget *parent){
     //Création de la scène.
@@ -44,8 +46,11 @@ Game::Game(QWidget *parent){
     scene->addItem(health);
 
     //Spawner d'ennemis.
+    Spawner * spawner = new Spawner();
+    //scene->addItem(spawner);
+
     QTimer * timer = new QTimer();
-    QObject::connect(timer,SIGNAL(timeout()),player,SLOT(spawn()));
+    connect(timer,SIGNAL(timeout()),spawner,SLOT(spawn()));
     timer->start(2000);
 
     //Musique de background.
@@ -60,5 +65,9 @@ Game::Game(QWidget *parent){
     music->play();
 
     show();
+}
+
+void Game::mousePressEvent(QMouseEvent *event) {
+    player->setFocus();
 }
 
