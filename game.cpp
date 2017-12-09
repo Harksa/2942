@@ -9,6 +9,8 @@
 #include <QFileDialog>
 #include <QMouseEvent>
 #include <iostream>
+#include <QApplication>
+#include <QDesktopWidget>
 
 #include "enemy.h"
 #include "constants.h"
@@ -63,6 +65,11 @@ Game::Game(QWidget *parent){
     QMediaPlayer * music = new QMediaPlayer();
     music->setPlaylist(playlist);
     music->play();
+
+    QRect screenGeometry = QApplication::desktop()->screenGeometry();
+    int x = (screenGeometry.width() - this->width()) / 2;
+    int y = (screenGeometry.height() - this->height()) / 2;
+    this->move(x, y);
 
     show();
 }
