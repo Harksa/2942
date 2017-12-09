@@ -11,6 +11,7 @@ public:
     Bullet(QGraphicsItem *parent = 0);
 private:
     float bulletSpeed = 0.8f;
+    int bulletDamage = 1;
 public slots:
     void move();
 };

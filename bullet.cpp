@@ -23,13 +23,7 @@ void Bullet::move() {
     for(int i = 0 ; i < colliding_items.size() ; i++) {
         //Si collision avec object de type Enemy
         if(typeid(*(colliding_items[i])) == typeid(Enemy)) {
-            //Rajouter le score avant la suppression.
-            game->score->increase();
-
-            //Destruction des deux objets.
-            scene()->removeItem(colliding_items[i]);
-            scene()->removeItem(this);
-            delete colliding_items[i];
+            dynamic_cast<Enemy*>(colliding_items[i])->decrementeLife(bulletDamage);
             delete this;
             return; //Ne pas continuer le code si collision.
         }
