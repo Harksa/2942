@@ -12,6 +12,8 @@ public:
 private:
     float bulletSpeed = 0.8f;
     int bulletDamage = 1;
+
+    bool CheckCollision(const QGraphicsItem &item);
 public slots:
     void move();
 };

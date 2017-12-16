@@ -4,6 +4,7 @@
 
 #include "bullet.h"
 #include "enemy.h"
+#include "enemygreen.h"
 
 #include "game.h"
 extern Game * game;
@@ -22,7 +23,7 @@ void Bullet::move() {
 
     for(int i = 0 ; i < colliding_items.size() ; i++) {
         //Si collision avec object de type Enemy
-        if(typeid(*(colliding_items[i])) == typeid(Enemy)) {
+        if(CheckCollision(*(colliding_items[i]))) {
             dynamic_cast<Enemy*>(colliding_items[i])->decrementeLife(bulletDamage);
             delete this;
             return; //Ne pas continuer le code si collision.
@@ -35,4 +36,11 @@ void Bullet::move() {
         scene()->removeItem(this);
         delete this;
     }
+}
+
+bool Bullet::CheckCollision(const QGraphicsItem &item) {
+    if(typeid(item) == typeid(EnemyGreen))
+        return true;
+
+    return false;
 }

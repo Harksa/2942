@@ -8,8 +8,7 @@
 class Enemy : public QObject, public QGraphicsPixmapItem{
     Q_OBJECT
 public:
-    Enemy();
-    Enemy(int pos_x);
+    Enemy(int pos_x = -1);
 
     void decrementeLife(int damage);
     int getLife() const {return life;}
@@ -21,8 +20,10 @@ protected:
     int life;
     float moveSpeed;
     int scoreGiven;
+
+    void spawn(int i = -1);
 public slots:
-    void move();
+    virtual void move() = 0;
 };
 
 #endif // ENEMY_H
