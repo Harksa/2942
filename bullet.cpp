@@ -5,6 +5,7 @@
 #include "bullet.h"
 #include "enemy.h"
 #include "enemygreen.h"
+#include "enemyred.h"
 
 #include "game.h"
 extern Game * game;
@@ -39,7 +40,7 @@ void Bullet::move() {
 }
 
 bool Bullet::CheckCollision(const QGraphicsItem &item) {
-    if(typeid(item) == typeid(EnemyGreen))
+    if(typeid(item) == typeid(EnemyGreen) || typeid(item) == typeid(EnemyRed))
         return true;
 
     return false;

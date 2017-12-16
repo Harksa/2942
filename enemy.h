@@ -22,6 +22,7 @@ protected:
     int scoreGiven;
 
     void spawn(int i = -1);
+    void destroyWhenOutsideMap();
 public slots:
     virtual void move() = 0;
 };

@@ -40,3 +40,11 @@ void Enemy::spawn(int i) {
 
     TimerAvancer();
 }
+
+void Enemy::destroyWhenOutsideMap() {
+    if(pos().y() + pixmap().height() > height_scene + pixmap().height()) {
+        game->health->decrease();
+        scene()->removeItem(this);
+        delete this;
+    }
+}

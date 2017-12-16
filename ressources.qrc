@@ -13,5 +13,6 @@
         <file>Images/playerLeft.png</file>
         <file>Images/playerRight.png</file>
         <file>Images/laserGreenShot.png</file>
+        <file>Images/enemyShipRed.png</file>
     </qresource>
 </RCC>
