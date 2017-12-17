@@ -13,6 +13,8 @@ Spawner::Spawner(QObject *parent) : QObject(parent)
 }
 
 void Spawner::spawn() {
-    Enemy * enemy = new EnemyGreen();
-    game->scene->addItem(enemy);
+    if(canSpawn) {
+        Enemy * enemy = new EnemyGreen();
+        game->scene->addItem(enemy);
+    }
 }

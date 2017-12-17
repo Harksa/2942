@@ -52,8 +52,7 @@ Game::Game(QWidget *parent){
     scene->addItem(health);
 
     //Spawner d'ennemis.
-    Spawner * spawner = new Spawner();
-    //scene->addItem(spawner);
+    spawner = new Spawner();
 
     QTimer * timer = new QTimer();
     connect(timer,SIGNAL(timeout()),spawner,SLOT(spawn()));

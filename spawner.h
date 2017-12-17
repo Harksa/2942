@@ -11,6 +11,8 @@ class Spawner : public QObject
 public:
     explicit Spawner(QObject *parent = nullptr);
 
+    bool canSpawn = true;
+
 signals:
 
 public slots:

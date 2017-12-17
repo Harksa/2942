@@ -10,6 +10,7 @@
 #include "Player.h"
 #include "score.h"
 #include "health.h"
+#include "spawner.h"
 
 class Game: public QGraphicsView{
 public:
@@ -19,6 +20,7 @@ public:
     Player * player;
     Score * score;
     Health * health;
+    Spawner * spawner;
 
 private:
     void mousePressEvent(QMouseEvent *event);

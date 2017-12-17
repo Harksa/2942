@@ -1,41 +1,29 @@
 #include <QDebug>
 #include <QKeyEvent>
-#include <QGraphicsScene>
-#include <QDebug>
 #include <QTimer>
-#include <QPainter>
-#include <QStyleOptionGraphicsItem>
-#include <QWidget>
-#include <QMovie>
 
 #include "Player.h"
 #include "bullet.h"
 #include "constants.h"
-#include "enemy.h"
+#include "game.h"
 
+extern Game * game;
 
 Player::Player(QGraphicsItem *parent): Sprite(":/pictures/Images/ship.gif", 10, parent){
     bulletSound = new QMediaPlayer(this);
     bulletSound->setMedia(QUrl("qrc:/sounds/Sounds/laser.mp3"));
 
     setPixmap(animation->currentPixmap());
-
-    posX = width_scene / 2 - pixmap().width() / 2, posY = height_scene - 200;
-
+    posX = width_scene / 2 - 20, posY = height_scene - 200;
     setPos(posX, posY);
 
-    QTimer * movements = new QTimer;
+    movements = new QTimer;
     connect(movements, SIGNAL(timeout()), this, SLOT(KeysProcessing()));
     movements->start(1);
 
     QTimer * fire = new QTimer;
     connect(fire, SIGNAL(timeout()), this, SLOT(makeFirePossible()));
     fire->start(playerStats.fireDelay);
-
-
-    QTimer * animation = new QTimer;
-    connect(animation, SIGNAL(timeout()), this, SLOT(loopAnimation()));
-    animation->start(10);
 
     canFire = true;
 }
@@ -65,36 +53,37 @@ void Player::keyReleaseEvent(QKeyEvent *event){
 }
 
 void Player::KeysProcessing(){
+    if(game->health->getHealth() > 0) {
+        changeAnimation();
 
-    changeAnimation();
-
-    //Mouvements.
-    if(keysPressed.contains(Qt::Key_Left)) {
-        if(pos().x() > 0) {
-            posX -= playerStats.playerSpeed;
+        //Mouvements.
+        if(keysPressed.contains(Qt::Key_Left)) {
+            if(pos().x() > 0) {
+                posX -= playerStats.playerSpeed;
+            }
         }
-    }
-    if (keysPressed.contains(Qt::Key_Right)) {
-        if(pos().x() + pixmap().width() < width_scene) {
-            posX += playerStats.playerSpeed;
+        if (keysPressed.contains(Qt::Key_Right)) {
+            if(pos().x() + pixmap().width() < width_scene) {
+                posX += playerStats.playerSpeed;
+            }
         }
-    }
-    if (keysPressed.contains(Qt::Key_Up)) {
-        if(pos().y() > 0)
-            posY -= playerStats.playerSpeed;
-    }
-    if (keysPressed.contains(Qt::Key_Down)) {
-        if(pos().y() + pixmap().height() < height_scene)
-            posY += playerStats.playerSpeed;
-    }
+        if (keysPressed.contains(Qt::Key_Up)) {
+            if(pos().y() > 0)
+                posY -= playerStats.playerSpeed;
+        }
+        if (keysPressed.contains(Qt::Key_Down)) {
+            if(pos().y() + pixmap().height() < height_scene)
+                posY += playerStats.playerSpeed;
+        }
 
-    //Projectiles.
-    if(keysPressed.contains(Qt::Key_Space)) {
-        if(canFire)
-            fire();
-    }
+        //Projectiles.
+        if(keysPressed.contains(Qt::Key_Space)) {
+            if(canFire)
+                fire();
+        }
 
-    setPos(posX, posY);
+        setPos(posX, posY);
+    }
 }
 
 
