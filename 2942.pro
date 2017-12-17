@@ -35,7 +35,9 @@ SOURCES += \
     health.cpp \
     spawner.cpp \
     enemygreen.cpp \
-    enemyred.cpp
+    enemyred.cpp \
+    particleeffect.cpp \
+    sprite.cpp
 
 HEADERS += \
     bullet.h \
@@ -48,7 +50,9 @@ HEADERS += \
     playerstats.h \
     spawner.h \
     enemygreen.h \
-    enemyred.h
+    enemyred.h \
+    particleeffect.h \
+    sprite.h
 
 RESOURCES += \
     ressources.qrc

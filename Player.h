@@ -9,8 +9,9 @@
 #include <QMovie>
 
 #include "playerstats.h"
+#include "sprite.h"
 
-class Player : public QObject, public QGraphicsPixmapItem {
+class Player : public Sprite {
     Q_OBJECT
 public:
     Player(QGraphicsItem *parent = 0);
@@ -19,7 +20,6 @@ public:
     void keyReleaseEvent(QKeyEvent *event);
 
 private:
-    QMovie * movie;                 //Le gif du vaisseau.
     float posX, posY;               //Position du joueur.
     PlayerStats playerStats;        //Stats du vaisseau du joueur.
     QMediaPlayer * bulletSound;     //Le mediaplayer du tir.
@@ -33,7 +33,6 @@ private:
 public slots:
     void KeysProcessing();
     void makeFirePossible();
-    void loopAnimation();
 };
 
 #endif // MYRECT_H

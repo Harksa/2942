@@ -14,12 +14,11 @@
 #include "enemy.h"
 
 
-Player::Player(QGraphicsItem *parent): QGraphicsPixmapItem(parent){
+Player::Player(QGraphicsItem *parent): Sprite(":/pictures/Images/ship.gif", 10, parent){
     bulletSound = new QMediaPlayer(this);
     bulletSound->setMedia(QUrl("qrc:/sounds/Sounds/laser.mp3"));
 
-    movie = new QMovie(":/pictures/Images/ship.gif");
-    setPixmap(movie->currentPixmap());
+    setPixmap(animation->currentPixmap());
 
     posX = width_scene / 2 - pixmap().width() / 2, posY = height_scene - 200;
 
@@ -36,7 +35,7 @@ Player::Player(QGraphicsItem *parent): QGraphicsPixmapItem(parent){
 
     QTimer * animation = new QTimer;
     connect(animation, SIGNAL(timeout()), this, SLOT(loopAnimation()));
-    animation->start(100);
+    animation->start(10);
 
     canFire = true;
 }
@@ -102,33 +101,29 @@ void Player::KeysProcessing(){
 void Player::changeAnimation(){
     if(keysPressed.contains(Qt::Key_Left)) {
         if(!TurnDone) {
-            movie = new QMovie(":/pictures/Images/shipLeft.gif");
+            animation = new QMovie(":/pictures/Images/shipLeft.gif");
             TurnDone = true;
         }
     }
 
     if (keysPressed.contains(Qt::Key_Right)) {
         if(!TurnDone) {
-            movie = new QMovie(":/pictures/Images/shipRight.gif");
+            animation = new QMovie(":/pictures/Images/shipRight.gif");
             TurnDone = true;
         }
     }
 
     if(!keysPressed.contains(Qt::Key_Left) && !keysPressed.contains(Qt::Key_Right)) {
         if(TurnDone) {
-            movie = new QMovie(":/pictures/Images/ship.gif");
+            animation = new QMovie(":/pictures/Images/ship.gif");
             TurnDone = false;
         }
     }
 
-    setPixmap(movie->currentPixmap());
+    setPixmap(animation->currentPixmap());
 }
 
 void Player::makeFirePossible() {
     canFire = true;
 }
 
-void Player::loopAnimation(){
-    movie->jumpToNextFrame();
-    setPixmap(movie->currentPixmap());
-}
