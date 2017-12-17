@@ -9,7 +9,13 @@
 class ParticleEffect : public Sprite {
     Q_OBJECT
 public:
-    ParticleEffect();
+    ParticleEffect(QString path, int frameRate, QGraphicsItem *parent = 0);
+
+private:
+    QTimer * timer;
+
+private slots:
+    void loopAnimation();
 };
 
 #endif // PARTICLEEFFECT_H

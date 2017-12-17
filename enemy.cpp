@@ -6,6 +6,7 @@
 
 #include "constants.h"
 #include "game.h"
+#include "particleeffect.h"
 
 extern Game * game;
 
@@ -23,6 +24,10 @@ void Enemy::decrementeLife(int damage) {
     life -= damage;
 
     if(life <= 0) {
+        ParticleEffect * particle = new ParticleEffect(":/pictures/Images/explosion.gif", 50);
+        particle->setPos(x(), y());
+        scene()->addItem(particle);
+
         scene()->removeItem(this);
         game->score->increase(scoreGiven);
         delete this;

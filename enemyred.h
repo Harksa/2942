@@ -4,7 +4,6 @@
 #include <QObject>
 #include <QGraphicsItem>
 #include <QGraphicsPixmapItem>
-#include <QElapsedTimer>
 
 #include "enemy.h"
 

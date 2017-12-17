@@ -17,5 +17,6 @@
         <file>Images/ship.gif</file>
         <file>Images/shipLeft.gif</file>
         <file>Images/shipRight.gif</file>
+        <file>Images/explosion.gif</file>
     </qresource>
 </RCC>

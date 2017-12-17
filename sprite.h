@@ -9,7 +9,8 @@
 class Sprite : public QObject, public QGraphicsPixmapItem {
     Q_OBJECT
 public:
-    Sprite(QString path, int loopTime, QGraphicsItem *parent = 0);
+    Sprite(QString path, int frameRate, QGraphicsItem *parent = 0);
+    Sprite(QString path, QGraphicsItem *parent = 0);
 
 protected:
     QMovie * animation;

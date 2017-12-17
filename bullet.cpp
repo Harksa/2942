@@ -26,6 +26,7 @@ void Bullet::move() {
         //Si collision avec object de type Enemy
         if(CheckCollision(*(colliding_items[i]))) {
             dynamic_cast<Enemy*>(colliding_items[i])->decrementeLife(bulletDamage);
+            scene()->removeItem(this);
             delete this;
             return; //Ne pas continuer le code si collision.
         }

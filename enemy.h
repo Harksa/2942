@@ -5,7 +5,7 @@
 #include <QGraphicsItem>
 #include <QGraphicsPixmapItem>
 
-class Enemy : public QObject, public QGraphicsPixmapItem{
+class Enemy : public QObject, public QGraphicsPixmapItem {
     Q_OBJECT
 public:
     Enemy(int pos_x = -1);
