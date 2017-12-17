@@ -9,7 +9,7 @@
 
 #include "Player.h"
 #include "score.h"
-#include "health.h"
+#include "healthUI.h"
 #include "spawner.h"
 
 class Game: public QGraphicsView{
@@ -19,7 +19,7 @@ public:
     QGraphicsScene * scene;
     Player * player;
     Score * score;
-    Health * health;
+    HealthUI * health;
     Spawner * spawner;
 
 private:

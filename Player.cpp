@@ -17,13 +17,15 @@ Player::Player(QGraphicsItem *parent): Sprite(":/pictures/Images/ship.gif", 10, 
     posX = width_scene / 2 - 20, posY = height_scene - 200;
     setPos(posX, posY);
 
-    movements = new QTimer;
+    QTimer * movements = new QTimer;
     connect(movements, SIGNAL(timeout()), this, SLOT(KeysProcessing()));
     movements->start(1);
 
     QTimer * fire = new QTimer;
     connect(fire, SIGNAL(timeout()), this, SLOT(makeFirePossible()));
     fire->start(playerStats.fireDelay);
+
+
 
     canFire = true;
 }
@@ -86,6 +88,10 @@ void Player::KeysProcessing(){
     }
 }
 
+void Player::decreaseHealth(int i) {
+    playerStats.health -= i;
+    emit healthDecreased(i);
+}
 
 void Player::changeAnimation(){
     if(keysPressed.contains(Qt::Key_Left)) {

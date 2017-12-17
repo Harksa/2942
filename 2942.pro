@@ -32,12 +32,12 @@ SOURCES += \
     constants.cpp \
     game.cpp \
     score.cpp \
-    health.cpp \
     spawner.cpp \
     enemygreen.cpp \
     enemyred.cpp \
     particleeffect.cpp \
-    sprite.cpp
+    sprite.cpp \
+    healthUI.cpp
 
 HEADERS += \
     bullet.h \
@@ -46,13 +46,13 @@ HEADERS += \
     constants.h \
     game.h \
     score.h \
-    health.h \
     playerstats.h \
     spawner.h \
     enemygreen.h \
     enemyred.h \
     particleeffect.h \
-    sprite.h
+    sprite.h \
+    healthUI.h
 
 RESOURCES += \
     ressources.qrc

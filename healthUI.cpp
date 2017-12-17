@@ -1,4 +1,4 @@
-#include "health.h"
+#include "healthUI.h"
 
 #include <QFont>
 #include <QFontDatabase>
@@ -7,7 +7,7 @@
 
 extern Game * game;
 
-Health::Health(QGraphicsItem *parent){
+HealthUI::HealthUI(QGraphicsItem *parent){
     setZValue(1);
 
     health = 3;
@@ -22,12 +22,13 @@ Health::Health(QGraphicsItem *parent){
     Q_UNUSED(parent);
 }
 
-void Health::decrease(){
+void HealthUI::healthChanged(int i){
     if(health > 0)
-    health--;
+    health -= i;
     setPlainText("Health : " + QString::number(health));
 
-    if(health == 0) {
+    if(health <= 0) {
+        health = 0;
         game->spawner->canSpawn = false;
 
         QGraphicsTextItem * gameover = new QGraphicsTextItem("Game Over");
@@ -40,6 +41,6 @@ void Health::decrease(){
     }
 }
 
-int Health::getHealth(){
+int HealthUI::getHealth(){
     return health;
 }

@@ -48,7 +48,7 @@ void Enemy::spawn(int i) {
 
 void Enemy::destroyWhenOutsideMap() {
     if(pos().y() + pixmap().height() > height_scene + pixmap().height()) {
-        game->health->decrease();
+        game->player->decreaseHealth();
         scene()->removeItem(this);
         delete this;
     }

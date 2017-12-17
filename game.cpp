@@ -47,9 +47,11 @@ Game::Game(QWidget *parent){
     scene->addItem(score);
 
     //Création de la vie.
-    health = new Health();
+    health = new HealthUI();
     health->setPos(health->x(),health->y()+25);
     scene->addItem(health);
+
+    connect(player, SIGNAL(healthDecreased(int)), health, SLOT(healthChanged(int)));
 
     //Spawner d'ennemis.
     spawner = new Spawner();

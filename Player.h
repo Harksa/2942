@@ -18,13 +18,16 @@ public:
     void fire();
     void keyPressEvent(QKeyEvent * event);
     void keyReleaseEvent(QKeyEvent *event);
+    void decreaseHealth(int i = 1);
+
+signals:
+    void healthDecreased(int i = 1);
 
 private:
     float posX, posY;               //Position du joueur.
     PlayerStats playerStats;        //Stats du vaisseau du joueur.
     QMediaPlayer * bulletSound;     //Le mediaplayer du tir.
     QSet<int> keysPressed;          //Tableau de clé qui sera utilisé pour la gestion des touches pressées par le joueur.
-    QTimer * movements;
 
     bool canFire;                   //Sert à savoir si le joueur peut tirer ou non.
     bool TurnDone;                  //Bool pour empêcher le changement du sprite en boucle.
