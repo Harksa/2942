@@ -8,12 +8,12 @@
 class Bullet : public QObject, public QGraphicsPixmapItem {
     Q_OBJECT
 public:
-    Bullet(QGraphicsItem *parent = 0);
+    Bullet(float speed, int damage, QGraphicsItem *parent = 0);
     virtual bool CheckCollision(const QGraphicsItem &item) = 0;
 	
 protected:
-    float bulletSpeed = 0.8f;
-    int bulletDamage = 1;
+    float bulletSpeed;
+    int bulletDamage;
 	
 public slots:
     virtual void move() = 0;

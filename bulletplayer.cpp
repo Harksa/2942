@@ -7,7 +7,7 @@
 
 extern Game * game;
 
-PlayerBullet::PlayerBullet(QGraphicsItem *parent) : Bullet(parent){
+PlayerBullet::PlayerBullet(float speed, int damages, QGraphicsItem *parent): Bullet(speed, damages, parent){
     setPixmap(QPixmap(":/pictures/Images/laserGreen.png"));
 }
 

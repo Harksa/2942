@@ -10,7 +10,7 @@
 class EnemyBullet : public Bullet {
         Q_OBJECT
 public:
-    EnemyBullet(QGraphicsItem *parent = 0);
+    EnemyBullet(float speed, int damages, QGraphicsItem *parent = 0);
 	bool CheckCollision(const QGraphicsItem &item);
 
 public slots:

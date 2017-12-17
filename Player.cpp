@@ -25,7 +25,8 @@ Player::Player(QGraphicsItem *parent): Sprite(":/pictures/Images/ship.gif", 10, 
     connect(fire, SIGNAL(timeout()), this, SLOT(makeFirePossible()));
     fire->start(playerStats.fireDelay);
 
-
+    bulletSpeed = 0.8f;
+    bulletDamages = 1;
 
     canFire = true;
 }
@@ -33,7 +34,7 @@ Player::Player(QGraphicsItem *parent): Sprite(":/pictures/Images/ship.gif", 10, 
 
 void Player::fire(){
     canFire = false;
-    PlayerBullet * bullet = new PlayerBullet();
+    PlayerBullet * bullet = new PlayerBullet(bulletSpeed, bulletDamages);
     bullet->setPos(x() + pixmap().width() / 2 - bullet->pixmap().width() / 2, y() - pixmap().height() / 2);
     scene()->addItem(bullet);
 

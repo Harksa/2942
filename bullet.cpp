@@ -8,7 +8,9 @@
 #include "game.h"
 extern Game * game;
 
-Bullet::Bullet(QGraphicsItem *parent): QObject(), QGraphicsPixmapItem(parent) {
+Bullet::Bullet(float speed, int damage, QGraphicsItem *parent): QObject(), QGraphicsPixmapItem(parent) {
+    bulletSpeed = speed;
+    bulletDamage = damage;
 
     QTimer * timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
