@@ -31,6 +31,9 @@ Game::Game(QWidget *parent){
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setFixedSize(width_scene,height_scene);
 
+    //Rajouter les polices à la base de fonts.
+    QFontDatabase::addApplicationFont(":/fonts/Fonts/venus rising rg.ttf"); // ID : 0
+
     //Création du joueur.
     player = new Player();
     scene->addItem(player);
@@ -67,6 +70,7 @@ Game::Game(QWidget *parent){
     music->setPlaylist(playlist);
     music->play();
 
+    //Placer le jeu au milieu de l'écran.
     QRect screenGeometry = QApplication::desktop()->screenGeometry();
     int x = (screenGeometry.width() - this->width()) / 2;
     int y = (screenGeometry.height() - this->height()) / 2;

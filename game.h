@@ -5,6 +5,7 @@
 #include <QWidget>
 #include <QGraphicsScene>
 #include <QMediaPlayer>
+#include <QFontDatabase>
 
 #include "Player.h"
 #include "score.h"

@@ -19,4 +19,7 @@
         <file>Images/shipRight.gif</file>
         <file>Images/explosion.gif</file>
     </qresource>
+    <qresource prefix="/fonts">
+        <file>Fonts/venus rising rg.ttf</file>
+    </qresource>
 </RCC>
