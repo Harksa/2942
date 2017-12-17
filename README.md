@@ -9,15 +9,15 @@ On y incarne un vaisseau qui doit détruire des ennemis, tel que le classique 19
 - [x] Déplacement du personnage.
 - [x] Ennemis basiques.
 - [x] Système de points.
+- [x] Une classe abstraite pour les ennemis, afin d'en avoir plusieurs variétés.
 
 **TODO :**  
-* Une classe abstraite pour les ennemis, afin d'en avoir plusieurs variétés.
-* Ajouter la possibilité au vaisseaux adverses de pouvoir tirer (en direction du joueur ou non).
-* Un spawner d'ennemis qui prend en paramètre une liste de vague d'ennemis (créer une classe vague ou une structure pour la chose).
-* Des PowerUps (+ de vie, tirs * 2, puis * 3, + de points, etc...). Classe abstraite PowerUps puis précisions.
-* Une UI plus propre que ce qu'il y a maintenant. (Principalement un écran de gameover).
-* La possibilité de sauvegarder son meilleure score et de l'afficher dans le menu de séléctions des niveaux.
-* Des boss ?
+- [ ] Ajouter la possibilité au vaisseaux adverses de pouvoir tirer (en direction du joueur ou non).
+- [ ] Un spawner d'ennemis qui prend en paramètre une liste de vague d'ennemis (créer une classe vague ou une structure pour la chose).
+- [ ] Des PowerUps (+ de vie, tirs * 2, puis * 3, + de points, etc...). Classe abstraite PowerUps puis précisions.
+- [ ] Une UI plus propre que ce qu'il y a maintenant. (Principalement un écran de gameover).
+- [ ] La possibilité de sauvegarder son meilleure score et de l'afficher dans le menu de séléctions des niveaux.
+- [ ] Des boss ?
 
 
 Sounds and Art : "Kenney.nl" -> https://opengameart.org/users/kenney  
