@@ -9,13 +9,14 @@ class Bullet : public QObject, public QGraphicsPixmapItem {
     Q_OBJECT
 public:
     Bullet(QGraphicsItem *parent = 0);
-private:
+    virtual bool CheckCollision(const QGraphicsItem &item) = 0;
+	
+protected:
     float bulletSpeed = 0.8f;
     int bulletDamage = 1;
-
-    bool CheckCollision(const QGraphicsItem &item);
+	
 public slots:
-    void move();
+    virtual void move() = 0;
 };
 
 #endif // BULLET_H

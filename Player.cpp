@@ -3,7 +3,7 @@
 #include <QTimer>
 
 #include "Player.h"
-#include "bullet.h"
+#include "bulletplayer.h"
 #include "constants.h"
 #include "game.h"
 
@@ -33,7 +33,7 @@ Player::Player(QGraphicsItem *parent): Sprite(":/pictures/Images/ship.gif", 10, 
 
 void Player::fire(){
     canFire = false;
-    Bullet * bullet = new Bullet();
+    PlayerBullet * bullet = new PlayerBullet();
     bullet->setPos(x() + pixmap().width() / 2 - bullet->pixmap().width() / 2, y() - pixmap().height() / 2);
     scene()->addItem(bullet);
 
@@ -55,7 +55,7 @@ void Player::keyReleaseEvent(QKeyEvent *event){
 }
 
 void Player::KeysProcessing(){
-    if(game->health->getHealth() > 0) {
+    if(playerStats.health > 0) {
         changeAnimation();
 
         //Mouvements.

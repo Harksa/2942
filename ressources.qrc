@@ -18,6 +18,7 @@
         <file>Images/shipLeft.gif</file>
         <file>Images/shipRight.gif</file>
         <file>Images/explosion.gif</file>
+        <file>Images/laserRed.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>Fonts/venus rising rg.ttf</file>

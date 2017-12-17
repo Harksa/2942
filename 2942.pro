@@ -37,7 +37,9 @@ SOURCES += \
     enemyred.cpp \
     particleeffect.cpp \
     sprite.cpp \
-    healthUI.cpp
+    healthUI.cpp \
+    bulletplayer.cpp \
+    bulletenemy.cpp
 
 HEADERS += \
     bullet.h \
@@ -52,7 +54,9 @@ HEADERS += \
     enemyred.h \
     particleeffect.h \
     sprite.h \
-    healthUI.h
+    healthUI.h \
+    bulletenemy.h \
+    bulletplayer.h
 
 RESOURCES += \
     ressources.qrc
