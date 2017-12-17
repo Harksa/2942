@@ -35,7 +35,7 @@ Player::Player(QGraphicsItem *parent): QGraphicsPixmapItem(parent){
 
 
     QTimer * animation = new QTimer;
-    connect(animation, SIGNAL(timeout()), this, SLOT(changeAnimation()));
+    connect(animation, SIGNAL(timeout()), this, SLOT(loopAnimation()));
     animation->start(100);
 
     canFire = true;
@@ -67,16 +67,16 @@ void Player::keyReleaseEvent(QKeyEvent *event){
 
 void Player::KeysProcessing(){
 
+    changeAnimation();
+
     //Mouvements.
     if(keysPressed.contains(Qt::Key_Left)) {
         if(pos().x() > 0) {
-            setPixmap(movie->currentPixmap());
             posX -= playerStats.playerSpeed;
         }
     }
     if (keysPressed.contains(Qt::Key_Right)) {
         if(pos().x() + pixmap().width() < width_scene) {
-            setPixmap(movie->currentPixmap());
             posX += playerStats.playerSpeed;
         }
     }
@@ -89,11 +89,6 @@ void Player::KeysProcessing(){
             posY += playerStats.playerSpeed;
     }
 
-    //Si le joueur ne bouge pas à gauche ou droite, remettre l'image d'origine.
-    if(!keysPressed.contains(Qt::Key_Left) && !keysPressed.contains(Qt::Key_Right)) {
-        setPixmap(movie->currentPixmap());
-    }
-
     //Projectiles.
     if(keysPressed.contains(Qt::Key_Space)) {
         if(canFire)
@@ -103,11 +98,37 @@ void Player::KeysProcessing(){
     setPos(posX, posY);
 }
 
+
+void Player::changeAnimation(){
+    if(keysPressed.contains(Qt::Key_Left)) {
+        if(!TurnDone) {
+            movie = new QMovie(":/pictures/Images/shipLeft.gif");
+            TurnDone = true;
+        }
+    }
+
+    if (keysPressed.contains(Qt::Key_Right)) {
+        if(!TurnDone) {
+            movie = new QMovie(":/pictures/Images/shipRight.gif");
+            TurnDone = true;
+        }
+    }
+
+    if(!keysPressed.contains(Qt::Key_Left) && !keysPressed.contains(Qt::Key_Right)) {
+        if(TurnDone) {
+            movie = new QMovie(":/pictures/Images/ship.gif");
+            TurnDone = false;
+        }
+    }
+
+    setPixmap(movie->currentPixmap());
+}
+
 void Player::makeFirePossible() {
     canFire = true;
 }
 
-void Player::changeAnimation(){
+void Player::loopAnimation(){
     movie->jumpToNextFrame();
     setPixmap(movie->currentPixmap());
 }

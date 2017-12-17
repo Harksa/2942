@@ -19,18 +19,21 @@ public:
     void keyReleaseEvent(QKeyEvent *event);
 
 private:
-    QMovie * movie;
+    QMovie * movie;                 //Le gif du vaisseau.
     float posX, posY;               //Position du joueur.
     PlayerStats playerStats;        //Stats du vaisseau du joueur.
     QMediaPlayer * bulletSound;     //Le mediaplayer du tir.
     QSet<int> keysPressed;          //Tableau de clé qui sera utilisé pour la gestion des touches pressées par le joueur.
 
     bool canFire;                   //Sert à savoir si le joueur peut tirer ou non.
+    bool TurnDone;                  //Bool pour empêcher le changement du sprite en boucle.
+
+    void changeAnimation();
 
 public slots:
     void KeysProcessing();
     void makeFirePossible();
-    void changeAnimation();
+    void loopAnimation();
 };
 
 #endif // MYRECT_H
