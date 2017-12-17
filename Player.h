@@ -6,6 +6,7 @@
 #include <QObject>
 #include <QMediaPlayer>
 #include <QTimer>
+#include <QMovie>
 
 #include "playerstats.h"
 
@@ -18,6 +19,7 @@ public:
     void keyReleaseEvent(QKeyEvent *event);
 
 private:
+    QMovie * movie;
     float posX, posY;               //Position du joueur.
     PlayerStats playerStats;        //Stats du vaisseau du joueur.
     QMediaPlayer * bulletSound;     //Le mediaplayer du tir.
@@ -28,6 +30,7 @@ private:
 public slots:
     void KeysProcessing();
     void makeFirePossible();
+    void changeAnimation();
 };
 
 #endif // MYRECT_H

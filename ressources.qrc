@@ -14,5 +14,7 @@
         <file>Images/playerRight.png</file>
         <file>Images/laserGreenShot.png</file>
         <file>Images/enemyShipRed.png</file>
+        <file>Images/test.gif</file>
+        <file>Images/ship.gif</file>
     </qresource>
 </RCC>

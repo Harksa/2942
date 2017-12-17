@@ -3,6 +3,8 @@
 
 #include <QObject>
 
+#include "enemy.h"
+
 class Spawner : public QObject
 {
     Q_OBJECT

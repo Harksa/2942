@@ -12,7 +12,6 @@ EnemyRed::EnemyRed(int pos_x){
     scoreGiven = 15;
     moveSpeed = 0.6f;
 
-
     setPixmap(QPixmap(":/pictures/Images/enemyShipRed.png"));
     spawn(pos_x);
 }

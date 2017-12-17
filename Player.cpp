@@ -3,6 +3,10 @@
 #include <QGraphicsScene>
 #include <QDebug>
 #include <QTimer>
+#include <QPainter>
+#include <QStyleOptionGraphicsItem>
+#include <QWidget>
+#include <QMovie>
 
 #include "Player.h"
 #include "bullet.h"
@@ -14,7 +18,8 @@ Player::Player(QGraphicsItem *parent): QGraphicsPixmapItem(parent){
     bulletSound = new QMediaPlayer(this);
     bulletSound->setMedia(QUrl("qrc:/sounds/Sounds/laser.mp3"));
 
-    setPixmap(QPixmap(":/pictures/Images/player.png"));
+    movie = new QMovie(":/pictures/Images/ship.gif");
+    setPixmap(movie->currentPixmap());
 
     posX = width_scene / 2 - pixmap().width() / 2, posY = height_scene - 200;
 
@@ -28,6 +33,11 @@ Player::Player(QGraphicsItem *parent): QGraphicsPixmapItem(parent){
     connect(fire, SIGNAL(timeout()), this, SLOT(makeFirePossible()));
     fire->start(playerStats.fireDelay);
 
+
+    QTimer * animation = new QTimer;
+    connect(animation, SIGNAL(timeout()), this, SLOT(changeAnimation()));
+    animation->start(100);
+
     canFire = true;
 }
 
@@ -35,7 +45,7 @@ Player::Player(QGraphicsItem *parent): QGraphicsPixmapItem(parent){
 void Player::fire(){
     canFire = false;
     Bullet * bullet = new Bullet();
-    bullet->setPos(x() + pixmap().width() / 2 - 5, y() - pixmap().height() / 2);
+    bullet->setPos(x() + pixmap().width() / 2 - bullet->pixmap().width() / 2, y() - pixmap().height() / 2);
     scene()->addItem(bullet);
 
     //Remettre le son à 0 s'il est joué.
@@ -60,13 +70,13 @@ void Player::KeysProcessing(){
     //Mouvements.
     if(keysPressed.contains(Qt::Key_Left)) {
         if(pos().x() > 0) {
-            setPixmap(QPixmap(":/pictures/Images/playerLeft.png"));
+            setPixmap(movie->currentPixmap());
             posX -= playerStats.playerSpeed;
         }
     }
     if (keysPressed.contains(Qt::Key_Right)) {
         if(pos().x() + pixmap().width() < width_scene) {
-            setPixmap(QPixmap(":/pictures/Images/playerRight.png"));
+            setPixmap(movie->currentPixmap());
             posX += playerStats.playerSpeed;
         }
     }
@@ -81,7 +91,7 @@ void Player::KeysProcessing(){
 
     //Si le joueur ne bouge pas à gauche ou droite, remettre l'image d'origine.
     if(!keysPressed.contains(Qt::Key_Left) && !keysPressed.contains(Qt::Key_Right)) {
-        setPixmap(QPixmap(":/pictures/Images/player.png"));
+        setPixmap(movie->currentPixmap());
     }
 
     //Projectiles.
@@ -95,4 +105,9 @@ void Player::KeysProcessing(){
 
 void Player::makeFirePossible() {
     canFire = true;
+}
+
+void Player::changeAnimation(){
+    movie->jumpToNextFrame();
+    setPixmap(movie->currentPixmap());
 }

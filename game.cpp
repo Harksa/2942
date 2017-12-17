@@ -22,7 +22,8 @@ Game::Game(QWidget *parent){
     scene->setSceneRect(0,0,width_scene,height_scene);
 
     //Background.
-    scene->setBackgroundBrush(QBrush(QImage(":/pictures/Images/Background/starBackground.png")));
+    QBrush background(QImage(":/pictures/Images/Background/starBackground.png"));
+    scene->setBackgroundBrush(background);
 
     //Rajout de la scène et paramétrages.
     setScene(scene);
@@ -72,9 +73,13 @@ Game::Game(QWidget *parent){
     this->move(x, y);
 
     show();
+
+    Q_UNUSED(parent)
 }
 
 void Game::mousePressEvent(QMouseEvent *event) {
     player->setFocus();
+
+    Q_UNUSED(event);
 }
 

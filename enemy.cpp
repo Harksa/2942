@@ -10,7 +10,7 @@
 extern Game * game;
 
 Enemy::Enemy(int pos_x): QObject(), QGraphicsPixmapItem() {
-
+    Q_UNUSED(pos_x);
 }
 
 void Enemy::TimerAvancer() {
