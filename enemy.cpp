@@ -25,7 +25,7 @@ void Enemy::decrementeLife(int damage) {
 
     if(life <= 0) {
         ParticleEffect * particle = new ParticleEffect(":/pictures/Images/explosion.gif", 50);
-        particle->setPos(x(), y());
+        particle->setPos(x() + pixmap().width() / 2 - particle->pixmap().width() / 2, y() + pixmap().height() / 2);
         scene()->addItem(particle);
 
         scene()->removeItem(this);

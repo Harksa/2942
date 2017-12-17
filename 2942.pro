@@ -39,7 +39,8 @@ SOURCES += \
     sprite.cpp \
     healthUI.cpp \
     bulletplayer.cpp \
-    bulletenemy.cpp
+    bulletenemy.cpp \
+    enemy_firing.cpp
 
 HEADERS += \
     bullet.h \
@@ -56,7 +57,8 @@ HEADERS += \
     sprite.h \
     healthUI.h \
     bulletenemy.h \
-    bulletplayer.h
+    bulletplayer.h \
+    enemy_firing.h
 
 RESOURCES += \
     ressources.qrc

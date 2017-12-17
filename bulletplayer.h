@@ -13,7 +13,7 @@ public:
     PlayerBullet(float speed, int damages, QGraphicsItem *parent = 0);
 	bool CheckCollision(const QGraphicsItem &item);
 	
-public slots:
+private slots:
     void move();
 };
 

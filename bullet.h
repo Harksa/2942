@@ -15,7 +15,7 @@ protected:
     float bulletSpeed;
     int bulletDamage;
 	
-public slots:
+protected slots:
     virtual void move() = 0;
 };
 

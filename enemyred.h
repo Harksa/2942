@@ -13,7 +13,7 @@ public:
     EnemyRed(int pos_x = - 1);
 
 private:
-    int gitan = 0;
+    int time = 0;
 public slots:
     void move();
 };
