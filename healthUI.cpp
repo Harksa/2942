@@ -38,6 +38,9 @@ void HealthUI::healthChanged(int i){
         scene()->addItem(gameover);
 
         gameover->setPos(scene()->width() / 2 - 135, scene()->height() / 2 - 20);
+		
+		game->score->checkHighScores(game->score->getScore());
+		game->score->showHighScores();
     }
 }
 
