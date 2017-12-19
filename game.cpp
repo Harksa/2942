@@ -56,10 +56,6 @@ Game::Game(QWidget *parent){
     //Spawner d'ennemis.
     spawner = new Spawner();
 
-    QTimer * timer = new QTimer();
-    connect(timer,SIGNAL(timeout()),spawner,SLOT(spawn()));
-    timer->start(2000);
-
     //Musique de background.
     QUrl path("qrc:/musics/Musics/level1.mp3");
 

@@ -4,7 +4,13 @@
 #include <QObject>
 #include <QGraphicsTextItem>
 #include <QFontDatabase>
-#include "struct.h"
+
+#include <QString>
+
+struct highScore{
+    QString playerName;
+    int playerScore;
+};
 
 class Score: public QGraphicsTextItem{
 public:

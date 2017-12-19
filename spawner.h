@@ -5,15 +5,30 @@
 
 #include "enemy.h"
 
-class Spawner : public QObject
-{
+struct Vague {
+    Enemy * enemy;
+    int number;
+    int position;
+
+    Vague(Enemy * e, int n, int pos) {
+       enemy = e;
+       number = n;
+       position = pos;
+    }
+};
+
+class Spawner : public QObject {
     Q_OBJECT
 public:
     explicit Spawner(QObject *parent = nullptr);
 
     bool canSpawn = true;
 
-signals:
+private:
+    QList<Vague> vagues;
+
+    int delayBeforeSpawn = 50;
+    int delayBeforeNewVague = 5000;
 
 public slots:
     void spawn();

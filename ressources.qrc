@@ -23,4 +23,7 @@
     <qresource prefix="/fonts">
         <file>Fonts/venus rising rg.ttf</file>
     </qresource>
+    <qresource prefix="/spawners">
+        <file>vagues.spwn</file>
+    </qresource>
 </RCC>
