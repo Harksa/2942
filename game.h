@@ -9,11 +9,8 @@
 #include <QMediaPlaylist>
 #include <QFont>
 #include <QFontDatabase>
-#include <QString>
 #include <QTimer>
 #include <QImage>
-#include <QBrush>
-#include <QFileDialog>
 #include <QMouseEvent>
 #include <QApplication>
 #include <QDesktopWidget>
@@ -29,7 +26,7 @@
 /**
  * @brief Classe contenant la scène de jeu.
  */
-class Game: public QGraphicsView{
+class Game: public QGraphicsView {
 public:
     Game(QWidget * parent=0);
 

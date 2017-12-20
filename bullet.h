@@ -6,7 +6,7 @@
 #include <QObject>
 
 /**
- * @brief The Bullet class Classe abstraite qui regroupe les fonctions permettant aux entités de tirer.
+ * @brief Classe abstraite qui regroupe les fonctions permettant aux entités de tirer.
  */
 class Bullet : public QObject, public QGraphicsPixmapItem {
     Q_OBJECT

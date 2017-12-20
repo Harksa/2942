@@ -85,8 +85,6 @@ void HighScores::showHighScores(int offset)
         name->setPos(scene()->width() * 0.5 / 6, scene()->height() / 2 + offset);
 		
 		QGraphicsTextItem * score = new QGraphicsTextItem( QString::number(highScores[i].playerScore));
-        score->setDefaultTextColor(Qt::white);
-        score->setFont(QFont(font, 20));
         scene()->addItem(score);
 
         score->setPos(scene()->width() * 4 / 6, scene()->height() / 2 + offset);

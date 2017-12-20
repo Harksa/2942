@@ -8,7 +8,7 @@
 #include "bullet.h"
 
 /**
- * @brief Balles ennemie.
+ * @brief Balle ennemie.
  */
 class EnemyBullet : public Bullet {
         Q_OBJECT

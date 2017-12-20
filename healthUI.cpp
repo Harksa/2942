@@ -35,7 +35,3 @@ void HealthUI::healthChanged(int i){
 		}
     }
 }
-
-int HealthUI::getHealth(){
-    return health;
-}
