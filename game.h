@@ -39,9 +39,10 @@ public:
 	bool onGoing;
 	
 public :
+	void show_start_menu();
     void launch_game();
 	void game_over();
-	QGraphicsTextItem* add_menu(QString texte, int posX, int posY, int fontHeight);
+	void add_menu(QString texte, int posX, int posY, int fontHeight);
 	
 	bool getOnGoing();
 

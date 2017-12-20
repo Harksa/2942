@@ -14,7 +14,7 @@ struct highScore{
 class HighScores :  public QGraphicsTextItem{
 public:
     HighScores(QGraphicsItem * parent = 0);
-	void showHighScores();
+	void showHighScores(int offset);
 	void checkHighScores(int score);
 	
 private :

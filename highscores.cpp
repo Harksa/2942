@@ -67,9 +67,8 @@ QString HighScores::getPlayerName()
 }
 
 //Affichage du tableau des highScores
-void HighScores::showHighScores()
+void HighScores::showHighScores(int offset)
 {
-	int offset = 0;
 	for(int i = 0 ; i < 10 ; i++)
 	{
 		if(highScores[i].playerScore == -1)

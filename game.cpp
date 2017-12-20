@@ -49,10 +49,6 @@ Game::Game(QWidget *parent){
 	
     show();
 	
-	//QGraphicsTextItem*  playButton = add_menu("Play", scene->width() * 2 / 5, scene->height() * 2 / 6 , 20);
-	
-	//QGraphicsTextItem*  highscoresbutton = add_menu("HighScores", scene->width() * 2 / 5, scene->height() * 4 / 6 , 20);
-	
 	launch_game();
 
     Q_UNUSED(parent)
@@ -64,8 +60,16 @@ void Game::mousePressEvent(QMouseEvent *event) {
     Q_UNUSED(event);
 }
 
+//Ajout de "Play" & "High Scores"
+void Game::show_start_menu()
+{
+	add_menu("Play", scene->width() * 2 / 5, scene->height() * 2 / 6 , 20);
+	add_menu("High Scores", scene->width() * 2 / 5, scene->height() * 4 / 6 , 20);
+}
+
 void Game::launch_game(/*paramètres de niveau*/)
 {
+	//scene->clear();
 	onGoing = true; 
 	
 	//Création du joueur.
@@ -89,7 +93,6 @@ void Game::launch_game(/*paramètres de niveau*/)
 
     //Spawner d'ennemis.
     spawner = new Spawner();
-
     spawner->startSpawning();
 }
 
@@ -102,17 +105,17 @@ void Game::game_over()
 	
 	//Calcul et affichage du TOP 10
 	highscores->checkHighScores(score->getScore());
-    highscores->showHighScores();
+    highscores->showHighScores(0);
 	
 	//Bouton Rejouer
-	QGraphicsTextItem*  rejouer = add_menu("Play Again", scene->width() * 3 / 5, scene->height() * 5 / 6 , 20);
+    add_menu("Play Again", scene->width() * 3 / 5, scene->height() * 5 / 6 , 20);
 	//rejouer->mousePressEvent(QMouseEvent *event){ add_menu("Patatatata", scene->width() * 3 / 5, scene->height() * 5 / 6 , 20);}
 	
 	//Bouton  Menu
-    QGraphicsTextItem* menu = add_menu("Menu", scene->width() * 0.5 / 5 , scene->height() * 5 / 6, 20);
+    add_menu("Menu", scene->width() * 0.5 / 5 , scene->height() * 5 / 6, 20);
 }
 
-QGraphicsTextItem* Game::add_menu(QString texte, int posX, int posY, int fontHeight)
+void Game::add_menu(QString texte, int posX, int posY, int fontHeight)
 {
 	QGraphicsTextItem * menu = new QGraphicsTextItem(texte);
     menu->setDefaultTextColor(Qt::white);
@@ -120,10 +123,7 @@ QGraphicsTextItem* Game::add_menu(QString texte, int posX, int posY, int fontHei
     menu->setFont(QFont(font, fontHeight)); 
 	scene->addItem(menu);
 	menu->setPos(posX, posY);
-	return menu;
 }
-
-
 
 bool Game::getOnGoing()
 {
