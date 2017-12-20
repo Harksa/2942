@@ -49,6 +49,12 @@ Spawner::Spawner(QObject *parent) : QObject(parent){
 }
 
 void Spawner::startSpawning() {
+    QTimer * timer = new QTimer();
+    connect(timer,SIGNAL(timeout()),this,SLOT(spawn()));
+    timer->start(2000);
+}
+
+void Spawner::spawn() {
     if(game->getOnGoing()) {
         Enemy * enemy = new EnemyGreen();
         game->scene->addItem(enemy);

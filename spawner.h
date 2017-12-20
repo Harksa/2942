@@ -34,7 +34,7 @@ private:
     int delayBeforeNewVague = 2000;
 
 private slots:
-
+    void spawn();
 };
 
 #endif // SPAWNER_H
