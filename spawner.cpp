@@ -15,12 +15,14 @@
 extern Game * game;
 
 Spawner::Spawner(QObject *parent) : QObject(parent){
-    /*
+
     QFile file(":/spawners/vagues.spwn");
 
     if(!file.exists()) {
         QMessageBox::information(0,"SPAWNER::ERROR::", file.errorString());
     }
+
+    file.open(QIODevice::ReadOnly | QIODevice::Text);
 
     QString line;
     QTextStream stream(&file);
@@ -29,34 +31,27 @@ Spawner::Spawner(QObject *parent) : QObject(parent){
         line = stream.readLine();
         QStringList list = line.split(","); // 3 élements.
 
-        Enemy * enemy;
+        TypeEnemy type;
         if(list[0] == "Red")
-            enemy = new EnemyRed();
+            type = RED;
         else if(list[0] == "Green")
-            enemy = new EnemyGreen();
+            type = GREEN;
 
         int number_to_spawn = list[1].toInt();
         int pos_x = list[2].toInt();
 
-        Vague v(enemy, number_to_spawn, pos_x);
+        Wave w(type, number_to_spawn, pos_x);
 
-        vagues.push_back(v);
+        waves.push_back(w);
     }
 
-    foreach (Vague v, vagues) {
-        qDebug() << "loul";
-    }
-    */
-
-    QTimer * timer = new QTimer();
-    connect(timer,SIGNAL(timeout()), this,SLOT(spawn()));
-    timer->start(delayBeforeNewVague);
-
+   file.close();
 }
 
-void Spawner::spawn() {
+void Spawner::startSpawning() {
     if(game->getOnGoing()) {
         Enemy * enemy = new EnemyGreen();
         game->scene->addItem(enemy);
     }
 }
+

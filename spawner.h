@@ -5,13 +5,18 @@
 
 #include "enemy.h"
 
-struct Vague {
-    Enemy * enemy;
+enum TypeEnemy {
+    GREEN,
+    RED
+};
+
+struct Wave {
+    TypeEnemy type;
     int number;
     int position;
 
-    Vague(Enemy * e, int n, int pos) {
-       enemy = e;
+    Wave(TypeEnemy t, int n, int pos) {
+       type = t;
        number = n;
        position = pos;
     }
@@ -21,15 +26,15 @@ class Spawner : public QObject {
     Q_OBJECT
 public:
     explicit Spawner(QObject *parent = nullptr);
-
+    void startSpawning();
 private:
-    QList<Vague> vagues;
+    QList<Wave> waves;
 
     int delayBeforeSpawn = 50;
-    int delayBeforeNewVague = 5000;
+    int delayBeforeNewVague = 2000;
 
-public slots:
-    void spawn();
+private slots:
+
 };
 
 #endif // SPAWNER_H

@@ -90,9 +90,7 @@ void Game::launch_game(/*paramètres de niveau*/)
     //Spawner d'ennemis.
     spawner = new Spawner();
 
-    QTimer * timer = new QTimer();
-    connect(timer,SIGNAL(timeout()),spawner,SLOT(spawn()));
-    timer->start(2000);
+    spawner->startSpawning();
 }
 
 void Game::game_over()
