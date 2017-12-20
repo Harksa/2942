@@ -26,6 +26,9 @@
 #include "spawner.h"
 #include "highscores.h"
 
+/**
+ * @brief Classe contenant la scène de jeu.
+ */
 class Game: public QGraphicsView{
 public:
     Game(QWidget * parent=0);

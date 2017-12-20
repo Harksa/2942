@@ -6,7 +6,7 @@
 extern Game * game;
 
 EnemyGreen::EnemyGreen(int pos_x) : Enemy(pos_x){
-    life = 2;
+    life = 1;
     scoreGiven = 10;
     moveSpeed = 0.5f;
 
