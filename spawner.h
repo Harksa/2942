@@ -12,12 +12,12 @@ enum TypeEnemy {
 
 struct Wave {
     TypeEnemy type;
-    int number;
+    int quantity;
     int position;
 
-    Wave(TypeEnemy t, int n, int pos) {
+    Wave(TypeEnemy t, int q, int pos) {
        type = t;
-       number = n;
+       quantity = q;
        position = pos;
     }
 };
@@ -30,11 +30,19 @@ public:
 private:
     QList<Wave> waves;
 
-    int delayBeforeSpawn = 50;
-    int delayBeforeNewVague = 2000;
+    QTimer * timerSpawnWave;
+    QTimer * timerSpawnEnemies;
+    int delayBeforeSpawn = 500;         //Optimal pour la taille actuelle des vaisseaux
+    int delayBeforeNewVague = 3000;
+
+    int currentWave;
+    int enemy_count;
+
+    Enemy *chooseEnemyFromType(TypeEnemy type);
 
 private slots:
-    void spawn();
+    void spawnWave();
+    void spawnEnemy();
 };
 
 #endif // SPAWNER_H

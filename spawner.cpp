@@ -19,7 +19,7 @@ Spawner::Spawner(QObject *parent) : QObject(parent){
     QFile file(":/spawners/vagues.spwn");
 
     if(!file.exists()) {
-        QMessageBox::information(0,"SPAWNER::ERROR::", file.errorString());
+        QMessageBox::information(0,"SPAWNER ERROR", file.errorString());
     }
 
     file.open(QIODevice::ReadOnly | QIODevice::Text);
@@ -27,6 +27,7 @@ Spawner::Spawner(QObject *parent) : QObject(parent){
     QString line;
     QTextStream stream(&file);
 
+    int i = 1;
     while(!stream.atEnd()) {
         line = stream.readLine();
         QStringList list = line.split(","); // 3 élements.
@@ -36,6 +37,8 @@ Spawner::Spawner(QObject *parent) : QObject(parent){
             type = RED;
         else if(list[0] == "Green")
             type = GREEN;
+        else
+            QMessageBox::information(0, "SPAWNER ERROR", "Type not recognized : " + list[0] + " at line " + QString::number(i));
 
         int number_to_spawn = list[1].toInt();
         int pos_x = list[2].toInt();
@@ -43,21 +46,54 @@ Spawner::Spawner(QObject *parent) : QObject(parent){
         Wave w(type, number_to_spawn, pos_x);
 
         waves.push_back(w);
+        i++;
     }
 
    file.close();
 }
 
 void Spawner::startSpawning() {
-    QTimer * timer = new QTimer();
-    connect(timer,SIGNAL(timeout()),this,SLOT(spawn()));
-    timer->start(2000);
+    currentWave = -1;
+    timerSpawnWave = new QTimer();
+    connect(timerSpawnWave,SIGNAL(timeout()),this,SLOT(spawnWave()));
+    timerSpawnWave->start(delayBeforeNewVague);
 }
 
-void Spawner::spawn() {
-    if(game->getOnGoing()) {
-        Enemy * enemy = new EnemyGreen();
-        game->scene->addItem(enemy);
+
+void Spawner::spawnWave() {
+    currentWave++;
+    if(currentWave < waves.size()) {
+        enemy_count  = -1;
+        timerSpawnEnemies = new QTimer();
+        connect(timerSpawnEnemies,SIGNAL(timeout()),this,SLOT(spawnEnemy()));
+        timerSpawnEnemies->start(delayBeforeSpawn);
+    } else {
+        timerSpawnWave->stop();
     }
 }
+
+void Spawner::spawnEnemy(){
+    enemy_count++;
+    if(enemy_count < waves[currentWave].quantity) {
+        Enemy * enemy = chooseEnemyFromType(waves[currentWave].type);
+        game->scene->addItem(enemy);
+    } else {
+        timerSpawnEnemies->stop();
+    }
+}
+
+Enemy * Spawner::chooseEnemyFromType(TypeEnemy type){
+    int pos = waves[currentWave].position;
+    switch (type) {
+    case RED:
+        return new EnemyRed(pos);
+        break;
+    case GREEN:
+        return new EnemyGreen(pos);
+    default:
+        break;
+    }
+}
+
+
 
