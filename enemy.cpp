@@ -29,7 +29,10 @@ void Enemy::decrementeLife(int damage) {
         scene()->addItem(particle);
 
         scene()->removeItem(this);
-        game->score->increase(scoreGiven);
+        if(game->getOnGoing())
+		{
+			game->score->increase(scoreGiven);
+		}
         delete this;
     }
 }
@@ -48,7 +51,10 @@ void Enemy::spawn(int i) {
 
 void Enemy::destroyWhenOutsideMap() {
     if(pos().y() + pixmap().height() > height_scene + pixmap().height()) {
-        game->player->decreaseHealth();
+        if(game->getOnGoing())
+		{
+			game->player->decreaseHealth();
+		}
         scene()->removeItem(this);
         delete this;
     }

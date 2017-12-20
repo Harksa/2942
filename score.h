@@ -3,30 +3,16 @@
 
 #include <QObject>
 #include <QGraphicsTextItem>
-#include <QFontDatabase>
-
-#include <QString>
-
-struct highScore{
-    QString playerName;
-    int playerScore;
-};
 
 class Score: public QGraphicsTextItem{
 public:
     Score(QGraphicsItem * parent=0);
     void increase(int number = 1);
     int getScore();
-	void showHighScores();
-	void checkHighScores(int score);
-	
-private :
-    QString getPlayerName();
-    void newHighScore(QString name, int score, int position);
 	
 private:
     int score;
-	struct highScore highScores[10];
+	
 };
 
 #endif // SCORE_H

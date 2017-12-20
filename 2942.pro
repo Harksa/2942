@@ -40,7 +40,8 @@ SOURCES += \
     healthUI.cpp \
     bulletplayer.cpp \
     bulletenemy.cpp \
-    enemy_firing.cpp
+    enemy_firing.cpp \
+    highscores.cpp
 
 HEADERS += \
     bullet.h \
@@ -58,7 +59,11 @@ HEADERS += \
     healthUI.h \
     bulletenemy.h \
     bulletplayer.h \
-    enemy_firing.h
+    enemy_firing.h \
+    highscores.h
 
 RESOURCES += \
     ressources.qrc
+
+DISTFILES += \
+    vagues.spwn

@@ -1,0 +1,12 @@
+main
+
+-> lance menu 
+		background
+		music
+		
+
+
+"jouer" -> "niveaux" 
+
+
+"highscore" -> 

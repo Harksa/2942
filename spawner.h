@@ -22,8 +22,6 @@ class Spawner : public QObject {
 public:
     explicit Spawner(QObject *parent = nullptr);
 
-    bool canSpawn = true;
-
 private:
     QList<Vague> vagues;
 
