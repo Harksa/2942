@@ -13,6 +13,9 @@ On y incarne un vaisseau qui doit détruire des ennemis, tel que le classique 19
 - [x] Une UI plus propre que ce qu'il y a maintenant. (Principalement un écran de gameover).
 - [x] Ajouter la possibilité au vaisseaux adverses de pouvoir tirer (en direction du joueur ou non).
 - [x] La possibilité de sauvegarder son meilleure score
+- [x] Empêcher la destruction des vaisseaux ennemis de trigger les highScore après le game over
+- [x] Séparer la partie "jeu" avec le joueur qui contrôle le vaisseau du reste
+- [x] Créer un menu (éviter de relancer l'instance de game, ou alors sauvegarder les scores ailleurs que dans une partie de game) depuis lequel accéder au jeux/highscores ?
 
 **TODO :**  
 
@@ -27,9 +30,7 @@ Gestion du joueur :
 - [ ] Collisions entre joueurs et ennemis
 
 Gestion menus/scores:
-- [ ] Créer un menu (éviter de relancer l'instance de game, ou alors sauvegarder les scores ailleurs que dans une partie de game) depuis lequel accéder au jeux/highscores ?
-- [ ] Possibilité de relancer le jeu après un game over (sans/avec redémarrer l'instance de game ?)
-- [ ] Empêcher la destruction des vaisseaux ennemis de trigger les highScore après le game over
+- [ ] Faire fonctionner le menu et le bouton rejouer
 
 Autres :
 - [ ] Plusieurs niveaux ou un niveau qui devient de plus en plus difficile ?
