@@ -4,7 +4,7 @@
 #include "powerup.h"
 
 /**
- * @brief The HealthPowerUp class
+ * @brief PowerUp qui permettra d'augmenter la vie du joueur.
  */
 class HealthPowerUp : public PowerUp {
     Q_OBJECT

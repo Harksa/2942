@@ -10,6 +10,7 @@
 
 #include "powerup.h"
 #include "poweruphealth.h"
+#include "powerupscore.h"
 
 extern Game * game;
 
@@ -87,13 +88,18 @@ void Enemy::explode(){
     delete this;
 }
 
-
 void Enemy::spawnPowerUp(){
     int r = rand() % 10;
 
     if(r > 2) return;
     else {
-        PowerUp * powerUp = new HealthPowerUp(":/pictures/Images/powerup_life.gif", 50, 1);
+        r = rand() % 10;
+        PowerUp * powerUp;
+        if(r < 5) {
+           powerUp = new HealthPowerUp(":/pictures/Images/powerup_life.gif", 50, 1);
+        } else {
+           powerUp = new ScorePowerUp(":/pictures/Images/powerup_score.gif", 50, 30);
+        }
         powerUp->setPos(x() + pixmap().width() / 2, y() + pixmap().height() / 2);
         scene()->addItem(powerUp);
     }

@@ -45,7 +45,8 @@ SOURCES += \
     spacerock.cpp \
     enemyblue.cpp \
     powerup.cpp \
-    poweruphealth.cpp
+    poweruphealth.cpp \
+    powerupscore.cpp
 
 HEADERS += \
     bullet.h \
@@ -68,7 +69,8 @@ HEADERS += \
     spacerock.h \
     enemyblue.h \
     powerup.h \
-    poweruphealth.h
+    poweruphealth.h \
+    powerupscore.h
 
 RESOURCES += \
     ressources.qrc
