@@ -15,7 +15,6 @@ void EnemyBullet::move() {
     QList<QGraphicsItem *> colliding_items = collidingItems();
 
     for(int i = 0 ; i < colliding_items.size() ; i++) {
-        //Si collision avec object de type Enemy
         if(CheckCollision(*(colliding_items[i]))) {
             game->player->decreaseHealth();
             scene()->removeItem(this);

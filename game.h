@@ -14,7 +14,6 @@
 #include <QMouseEvent>
 #include <QApplication>
 #include <QDesktopWidget>
-
 #include <iostream>
 
 #include "Player.h"
@@ -27,6 +26,7 @@
  * @brief Classe contenant la scène de jeu.
  */
 class Game: public QGraphicsView {
+    Q_OBJECT
 public:
     /**
      * @brief Game Le constructeur de la classe Game.

@@ -1,5 +1,6 @@
 #include "enemy.h"
 #include "enemyred.h"
+#include <cmath>
 
 #include <QDebug>
 

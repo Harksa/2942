@@ -32,6 +32,9 @@ Spawner::Spawner(QObject *parent) : QObject(parent){
         line = stream.readLine();
         QStringList list = line.split(","); // 3 élements.
 
+        if(list.size() < 3) {
+            QMessageBox::information(0, "SPAWNER ERROR", "Wrong number of element in line " + QString::number(i) + ". Must be at least 3");
+        }
         TypeEnemy type;
         if(list[0] == "Red")
             type = RED;
