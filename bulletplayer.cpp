@@ -4,9 +4,8 @@
 #include "game.h"
 #include "enemygreen.h"
 #include "enemyred.h"
+#include "enemyblue.h"
 #include "spacerock.h"
-
-extern Game * game;
 
 PlayerBullet::PlayerBullet(float speed, int damages, QGraphicsItem *parent): Bullet(speed, damages, parent){
     setPixmap(QPixmap(":/pictures/Images/laserGreen.png"));
@@ -35,7 +34,11 @@ void PlayerBullet::move() {
 }
 
 bool PlayerBullet::CheckCollision(const QGraphicsItem &item) {
-    if(typeid(item) == typeid(EnemyGreen) || typeid(item) == typeid(EnemyRed) || typeid(item) == typeid(SpaceRock))
+    if(typeid(item) == typeid(EnemyGreen) ||
+            typeid(item) == typeid(EnemyRed) ||
+            typeid(item) == typeid(SpaceRock) ||
+            typeid(item) == typeid(EnemyBlue)
+      )
         return true;
 
     return false;

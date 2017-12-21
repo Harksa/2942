@@ -12,6 +12,7 @@
 enum TypeEnemy {
     GREEN,
     RED,
+    BLUE,
     SPACEROCK,
     ERROR
 };

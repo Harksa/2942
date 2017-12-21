@@ -1,10 +1,6 @@
 #include "enemy.h"
 #include "enemygreen.h"
 
-#include "game.h"
-
-extern Game * game;
-
 EnemyGreen::EnemyGreen(int pos_x) : Enemy(pos_x){
     life = 1;
     scoreGiven = 10;

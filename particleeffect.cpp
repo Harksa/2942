@@ -3,7 +3,6 @@
 #include <QMovie>
 #include <QTimer>
 #include <QGraphicsScene>
-#include <QDebug>
 
 #include "sprite.h"
 

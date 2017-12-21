@@ -1,6 +1,8 @@
 #ifndef ENEMY_FIRING_H
 #define ENEMY_FIRING_H
 
+#include <QGraphicsPixmapItem>
+#include <QGraphicsItem>
 #include <QObject>
 
 #include "enemy.h"
@@ -32,6 +34,16 @@ protected:
      * @brief bulletDamage Les damages causés par le vaisseau.
      */
     int bulletDamage;
+
+    /**
+     * @brief startFiring Fonction qui permet commencer à tirer le vaisseau.
+     */
+    void startFiring();
+
+    /**
+     * @brief move
+     */
+    virtual void move() = 0;
 
 protected slots:
 

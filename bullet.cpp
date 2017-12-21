@@ -1,6 +1,4 @@
 #include <QTimer>
-#include <QGraphicsScene>
-#include <QList>
 
 #include "bullet.h"
 #include "enemy.h"

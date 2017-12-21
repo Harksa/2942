@@ -6,7 +6,6 @@
 #include <QObject>
 #include <QMediaPlayer>
 #include <QTimer>
-#include <QMovie>
 
 #include "playerstats.h"
 #include "sprite.h"

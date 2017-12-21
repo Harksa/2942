@@ -76,7 +76,7 @@ protected:
      * @brief explode Détruit le vaisseau et fait apparaitre l'animation d'explosion.
      */
     void explode();
-public slots:
+protected slots:
 
     /**
      * @brief move Gére le mouvement du vaisseau.

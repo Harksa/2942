@@ -46,6 +46,7 @@ void Enemy::decrementeLife(int damage) {
     }
 }
 
+
 void Enemy::spawn(int i) {
     if(i == -1) {
         int rand_x = rand() % width_scene - pixmap().width();

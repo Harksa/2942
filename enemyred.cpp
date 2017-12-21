@@ -2,13 +2,7 @@
 #include "enemyred.h"
 #include <cmath>
 
-#include <QDebug>
-
-#include "game.h"
-
-extern Game * game;
-
-EnemyRed::EnemyRed(int pos_x){
+EnemyRed::EnemyRed(int pos_x) : Enemy(pos_x){
     life = 2;
     scoreGiven = 15;
     moveSpeed = 0.6f;

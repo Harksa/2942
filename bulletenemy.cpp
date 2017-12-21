@@ -1,4 +1,3 @@
-#include "bullet.h"
 #include "bulletenemy.h"
 
 #include "game.h"

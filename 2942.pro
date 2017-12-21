@@ -42,7 +42,8 @@ SOURCES += \
     bulletenemy.cpp \
     enemy_firing.cpp \
     highscores.cpp \
-    spacerock.cpp
+    spacerock.cpp \
+    enemyblue.cpp
 
 HEADERS += \
     bullet.h \
@@ -62,7 +63,8 @@ HEADERS += \
     bulletplayer.h \
     enemy_firing.h \
     highscores.h \
-    spacerock.h
+    spacerock.h \
+    enemyblue.h
 
 RESOURCES += \
     ressources.qrc
