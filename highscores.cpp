@@ -78,6 +78,6 @@ void HighScores::showHighScores(int offset){
         score->setFont(QFont(font, 20));
         scene()->addItem(score);
 
-        score->setPos(scene()->width() * 4 / 6, scene()->height() / 2 + offset);
+        score->setPos(scene()->width() * 4.5 / 6, scene()->height() / 2 + offset);
     }
 }

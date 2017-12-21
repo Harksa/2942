@@ -97,18 +97,12 @@ void Game::game_over(){
     player->setFlag(QGraphicsItem::ItemStopsFocusHandling);
 	
 	//Message Game over
-    add_menu("Game Over", scene->width() * 1 / 10 ,  scene->height() / 3 , 30);
+    add_menu("Game Over", scene->width() * 1.8 / 10 ,  scene->height() / 3 , 30);
 	
 	//Calcul et affichage du TOP 10
 	highscores->checkHighScores(score->getScore());
     highscores->showHighScores(0);
 	
-	//Bouton Rejouer
-    add_menu("Play Again", scene->width() * 3 / 5, scene->height() * 5 / 6 , 20);
-	//rejouer->mousePressEvent(QMouseEvent *event){ add_menu("Patatatata", scene->width() * 3 / 5, scene->height() * 5 / 6 , 20);}
-	
-	//Bouton  Menu
-    add_menu("Menu", scene->width() * 0.5 / 5 , scene->height() * 5 / 6, 20);
 }
 
 void Game::add_menu(QString texte, int posX, int posY, int fontHeight){
