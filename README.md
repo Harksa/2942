@@ -16,18 +16,18 @@ On y incarne un vaisseau qui doit détruire des ennemis, tel que le classique 19
 - [x] Empêcher la destruction des vaisseaux ennemis de trigger les highScore après le game over
 - [x] Séparer la partie "jeu" avec le joueur qui contrôle le vaisseau du reste
 - [x] Créer un menu (éviter de relancer l'instance de game, ou alors sauvegarder les scores ailleurs que dans une partie de game) depuis lequel accéder au jeux/highscores ?
+- [x] Un spawner d'ennemis qui prend en paramètre une liste de vague d'ennemis (créer une classe vague ou une structure pour la chose).
+- [x] Collisions entre joueurs et ennemis
 
 **TODO :**  
 
 Gestion des ennemis :
-- [ ] Un spawner d'ennemis qui prend en paramètre une liste de vague d'ennemis (créer une classe vague ou une structure pour la chose).
-- [ ] Gérer l'apparition des ennemis au fur et à mesure de la progression (coder l'apparition des differents ennemis, des vagues)
-- [ ] Ennemis qui ne tirent pas = météorites ?
+
 - [ ] Des boss ?
 
 Gestion du joueur :
 - [ ] Des PowerUps (+ de vie, tirs * 2, puis * 3, + de points, etc...). Classe abstraite PowerUps puis précisions.
-- [ ] Collisions entre joueurs et ennemis
+
 
 Gestion menus/scores:
 - [ ] Faire fonctionner le menu et le bouton rejouer
@@ -36,8 +36,4 @@ Autres :
 - [ ] Plusieurs niveaux ou un niveau qui devient de plus en plus difficile ?
 
 
-
-
-
 Sounds and Art : "Kenney.nl" -> https://opengameart.org/users/kenney  
-Music : Jan125 -> https://opengameart.org/users/jan125
