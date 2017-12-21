@@ -4,6 +4,7 @@
 #include "game.h"
 #include "enemygreen.h"
 #include "enemyred.h"
+#include "spacerock.h"
 
 extern Game * game;
 
@@ -34,7 +35,7 @@ void PlayerBullet::move() {
 }
 
 bool PlayerBullet::CheckCollision(const QGraphicsItem &item) {
-    if(typeid(item) == typeid(EnemyGreen) || typeid(item) == typeid(EnemyRed))
+    if(typeid(item) == typeid(EnemyGreen) || typeid(item) == typeid(EnemyRed) || typeid(item) == typeid(SpaceRock))
         return true;
 
     return false;

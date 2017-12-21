@@ -10,6 +10,8 @@
 #include "enemy.h"
 #include "enemygreen.h"
 #include "enemyred.h"
+#include "spacerock.h"
+
 #include "game.h"
 
 extern Game * game;
@@ -114,6 +116,8 @@ TypeEnemy Spawner::chooseTypeFromString(QString string) {
         type = RED;
     else if(string == "Green")
         type = GREEN;
+    else if(string == "SpaceRock")
+        type = SPACEROCK;
     else
         type = ERROR;
 
@@ -128,9 +132,14 @@ Enemy * Spawner::chooseEnemyFromType(TypeEnemy type){
         break;
     case GREEN:
         return new EnemyGreen(pos);
+        break;
+    case SPACEROCK:
+        return new SpaceRock(pos);
+        break;
     default:
+        return nullptr;
         break;
     }
 
-    return nullptr;
+
 }

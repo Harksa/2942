@@ -9,9 +9,6 @@
         <file>Images/Background/starBackground.png</file>
         <file>Images/enemyShip.png</file>
         <file>Images/laserGreen.png</file>
-        <file>Images/player.png</file>
-        <file>Images/playerLeft.png</file>
-        <file>Images/playerRight.png</file>
         <file>Images/laserGreenShot.png</file>
         <file>Images/enemyShipRed.png</file>
         <file>Images/ship.gif</file>
@@ -19,6 +16,8 @@
         <file>Images/shipRight.gif</file>
         <file>Images/explosion.gif</file>
         <file>Images/laserRed.png</file>
+        <file>Images/meteorBig.png</file>
+        <file>Images/meteorSmall.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>Fonts/venus rising rg.ttf</file>
