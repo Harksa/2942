@@ -134,6 +134,3 @@ Enemy * Spawner::chooseEnemyFromType(TypeEnemy type){
 
     return nullptr;
 }
-
-
-

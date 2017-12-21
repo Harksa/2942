@@ -20,5 +20,6 @@ EnemyRed::EnemyRed(int pos_x){
 void EnemyRed::move() {
     float radius{1.2f};
     setPos(sin((float) time++ / 100.0f) * radius + x(), y() + moveSpeed);
+    DestroyWhenContactWithPlayer();
     destroyWhenOutsideMap();
 }

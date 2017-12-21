@@ -16,5 +16,6 @@ EnemyGreen::EnemyGreen(int pos_x) : Enemy(pos_x){
 
 void EnemyGreen::move(){
     setPos(x(), y() + moveSpeed);
+    DestroyWhenContactWithPlayer();
     destroyWhenOutsideMap();
 }

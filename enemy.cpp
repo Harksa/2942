@@ -20,22 +20,33 @@ void Enemy::TimerAvancer() {
     timer->start(5);
 }
 
+void Enemy::DestroyWhenContactWithPlayer() {
+    QList<QGraphicsItem *> colliding_items = collidingItems();
+
+    for(int i = 0 ; i < colliding_items.size() ; i++) {
+        //Si collision avec object de type Enemy
+        if(checkCollisionWithPlayer(*(colliding_items[i]))) {
+            dynamic_cast<Player*>(colliding_items[i])->decreaseHealth();
+
+            explode();
+
+            return; //Ne pas continuer le code si collision.
+        }
+    }
+}
+
 void Enemy::decrementeLife(int damage) {
     life -= damage;
 
     if(life <= 0) {
-        ParticleEffect * particle = new ParticleEffect(":/pictures/Images/explosion.gif", 50);
-        particle->setPos(x() + pixmap().width() / 2 - particle->pixmap().width() / 2, y() + pixmap().height() / 2);
-        scene()->addItem(particle);
-
-        scene()->removeItem(this);
-        if(game->getOnGoing())
-		{
+        if(game->getOnGoing()){
 			game->score->increase(scoreGiven);
 		}
-        delete this;
+        explode();
     }
 }
+
+
 
 void Enemy::spawn(int i) {
     if(i == -1) {
@@ -58,4 +69,20 @@ void Enemy::destroyWhenOutsideMap() {
         scene()->removeItem(this);
         delete this;
     }
+}
+
+bool Enemy::checkCollisionWithPlayer(const QGraphicsItem &item){
+    if(typeid(item) == typeid(Player))
+        return true;
+
+    return false;
+}
+
+void Enemy::explode(){
+    ParticleEffect * particle = new ParticleEffect(":/pictures/Images/explosion.gif", 50);
+    particle->setPos(x() + pixmap().width() / 2 - particle->pixmap().width() / 2, y() + pixmap().height() / 2);
+    scene()->addItem(particle);
+
+    scene()->removeItem(this);
+    delete this;
 }

@@ -59,6 +59,23 @@ protected:
      * @brief destroyWhenOutsideMap Détruit le vaisseau lorsqu'il est en dehors de la carte.
      */
     void destroyWhenOutsideMap();
+
+    /**
+     * @brief DestroyWhenContactWithPlayer Detruit le vaisseau lorsqu'il rentre en contact avec le joueur.
+     */
+    void DestroyWhenContactWithPlayer();
+
+    /**
+     * @brief checkCollisionWithPlayer regarde les collisions entre le vaisseau et celui du joueur.
+     * @param item L'objet rentré en collision avec.
+     * @return Vrai si collision, faux sinon.
+     */
+    bool checkCollisionWithPlayer(const QGraphicsItem &item);
+
+    /**
+     * @brief explode Détruit le vaisseau et fait apparaitre l'animation d'explosion.
+     */
+    void explode();
 public slots:
 
     /**
