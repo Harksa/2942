@@ -9,11 +9,11 @@
 
 ParticleEffect::ParticleEffect(QString path, int frameRate, QGraphicsItem *parent) : Sprite(path, parent) {
     timer = new QTimer;
-    connect(timer, SIGNAL(timeout()), this, SLOT(loopAnimation()));
+    connect(timer, SIGNAL(timeout()), this, SLOT(animateThenDie()));
     timer->start(frameRate);
 }
 
-void ParticleEffect::loopAnimation() {
+void ParticleEffect::animateThenDie() {
     Sprite::loopAnimation();
 
     if(animation->currentFrameNumber() + 1 >= animation->frameCount()) {

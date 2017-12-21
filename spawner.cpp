@@ -93,6 +93,8 @@ Enemy * Spawner::chooseEnemyFromType(TypeEnemy type){
     default:
         break;
     }
+
+    return nullptr;
 }
 
 

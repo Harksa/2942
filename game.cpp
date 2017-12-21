@@ -45,30 +45,25 @@ Game::Game(QWidget *parent){
     int y = (screenGeometry.height() - this->height()) / 2;
     this->move(x, y);
 
-	
-	
-    show();
-	
 	launch_game();
 
     Q_UNUSED(parent)
 }
 
 void Game::mousePressEvent(QMouseEvent *event) {
-    player->setFocus();
+    if(!onGoing)
+        player->setFocus();
 
     Q_UNUSED(event);
 }
 
 //Ajout de "Play" & "High Scores"
-void Game::show_start_menu()
-{
+void Game::show_start_menu(){
 	add_menu("Play", scene->width() * 2 / 5, scene->height() * 2 / 6 , 20);
 	add_menu("High Scores", scene->width() * 2 / 5, scene->height() * 4 / 6 , 20);
 }
 
-void Game::launch_game(/*paramètres de niveau*/)
-{
+void Game::launch_game(/*paramètres de niveau*/){
 	//scene->clear();
 	onGoing = true; 
 	
@@ -96,9 +91,10 @@ void Game::launch_game(/*paramètres de niveau*/)
     spawner->startSpawning();
 }
 
-void Game::game_over()
-{
+void Game::game_over(){
 	onGoing = false;
+
+    player->setFlag(QGraphicsItem::ItemStopsFocusHandling);
 	
 	//Message Game over
     add_menu("Game Over", scene->width() * 1 / 10 ,  scene->height() / 3 , 30);
@@ -115,8 +111,7 @@ void Game::game_over()
     add_menu("Menu", scene->width() * 0.5 / 5 , scene->height() * 5 / 6, 20);
 }
 
-void Game::add_menu(QString texte, int posX, int posY, int fontHeight)
-{
+void Game::add_menu(QString texte, int posX, int posY, int fontHeight){
 	QGraphicsTextItem * menu = new QGraphicsTextItem(texte);
     menu->setDefaultTextColor(Qt::white);
     QString font = QFontDatabase::applicationFontFamilies(0).at(0);
@@ -125,7 +120,6 @@ void Game::add_menu(QString texte, int posX, int posY, int fontHeight)
 	menu->setPos(posX, posY);
 }
 
-bool Game::getOnGoing()
-{
+bool Game::getOnGoing(){
 	return onGoing;
 }
