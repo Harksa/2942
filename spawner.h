@@ -2,6 +2,7 @@
 #define SPAWNER_H
 
 #include <QObject>
+#include <QString>
 
 #include "enemy.h"
 
@@ -10,7 +11,8 @@
  */
 enum TypeEnemy {
     GREEN,
-    RED
+    RED,
+    ERROR
 };
 
 /**
@@ -33,6 +35,11 @@ struct Wave {
     int position;
 
     /**
+     * @brief delayBeforeNextWave Temps avant la prochaine vague.
+     */
+    int delayBeforeNextWave;
+
+    /**
      * @brief Wave Constructeur pour la structure.
      * @param t le type d'ennemi
      * @param q La quantité
@@ -43,6 +50,22 @@ struct Wave {
        quantity = q;
        position = pos;
     }
+
+    /**
+     * @brief Wave Constructeur pour la structure.
+     * @param t le type d'ennemi
+     * @param q La quantité
+     * @param pos La position
+     * @param time Le temps avant la prochaine vague.
+     */
+    Wave(TypeEnemy t, int q, int pos, int time) {
+       type = t;
+       quantity = q;
+       position = pos;
+       delayBeforeNextWave = time;
+    }
+
+    Wave();
 };
 
 /**
@@ -83,7 +106,7 @@ private:
     /**
      * @brief delayBeforeNewVague Le temps avant l'apparition d'une nouvelle vague.
      */
-    int delayBeforeNewVague = 3000;
+    int defaultDelayBeforeNewWave = 3000;
 
     /**
      * @brief delayBeforeSpawn Le temps avant l'apparition d'un nouveau vaisseau.
@@ -99,6 +122,13 @@ private:
      * @brief enemy_count Le compteur d'ennemi de la vague en court.
      */
     int enemy_count;
+
+    /**
+     * @brief chooseTypeFromString Retourne le type d'un ennemi en fonction du string rentré en paramètre.
+     * @param string Le string du type en cours.
+     * @return Le type d'ennemi
+     */
+    TypeEnemy chooseTypeFromString(QString string);
 
     /**
      * @brief chooseEnemyFromType Permet de choisir l'Enemy en fonction de son type.
