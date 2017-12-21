@@ -84,7 +84,7 @@ void Game::launch_game(/*paramètres de niveau*/){
     health->setPos(health->x(),health->y()+25);
     scene->addItem(health);
 
-    connect(player, SIGNAL(healthDecreased(int)), health, SLOT(healthChanged(int)));
+    connect(player, SIGNAL(healthChanged(int)), health, SLOT(healthChanged(int)));
 
     //Spawner d'ennemis.
     spawner = new Spawner();

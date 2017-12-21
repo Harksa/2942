@@ -91,7 +91,12 @@ void Player::KeysProcessing(){
 
 void Player::decreaseHealth(int i) {
     playerStats.health -= i;
-    emit healthDecreased(i);
+    emit healthChanged(-i);
+}
+
+void Player::increaseHealth(int i){
+    playerStats.health += i;
+    emit healthChanged(i);
 }
 
 void Player::changeAnimation(){

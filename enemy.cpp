@@ -8,6 +8,9 @@
 #include "game.h"
 #include "particleeffect.h"
 
+#include "powerup.h"
+#include "poweruphealth.h"
+
 extern Game * game;
 
 Enemy::Enemy(int pos_x): QObject(), QGraphicsPixmapItem() {
@@ -20,6 +23,7 @@ void Enemy::TimerAvancer() {
     timer->start(5);
 }
 
+
 void Enemy::DestroyWhenContactWithPlayer() {
     QList<QGraphicsItem *> colliding_items = collidingItems();
 
@@ -27,7 +31,6 @@ void Enemy::DestroyWhenContactWithPlayer() {
         //Si collision avec object de type Enemy
         if(checkCollisionWithPlayer(*(colliding_items[i]))) {
             dynamic_cast<Player*>(colliding_items[i])->decreaseHealth();
-
             explode();
 
             return; //Ne pas continuer le code si collision.
@@ -74,10 +77,24 @@ bool Enemy::checkCollisionWithPlayer(const QGraphicsItem &item){
 }
 
 void Enemy::explode(){
+    spawnPowerUp();
+
     ParticleEffect * particle = new ParticleEffect(":/pictures/Images/explosion.gif", 50);
     particle->setPos(x() + pixmap().width() / 2 - particle->pixmap().width() / 2, y() + pixmap().height() / 2);
     scene()->addItem(particle);
 
     scene()->removeItem(this);
     delete this;
+}
+
+
+void Enemy::spawnPowerUp(){
+    int r = rand() % 10;
+
+    if(r > 2) return;
+    else {
+        PowerUp * powerUp = new HealthPowerUp(":/pictures/Images/powerup_life.gif", 50, 1);
+        powerUp->setPos(x() + pixmap().width() / 2, y() + pixmap().height() / 2);
+        scene()->addItem(powerUp);
+    }
 }

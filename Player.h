@@ -44,12 +44,14 @@ public:
      */
     void decreaseHealth(int i = 1);
 
+    void increaseHealth(int i = 1);
+
 signals:
     /**
      * @brief healthDecreased Signal permettant de mettre à jour la vie du joueur sur l'UI.
      * @param i la quantité de vie perdue.
      */
-    void healthDecreased(int i = 1);
+    void healthChanged(int i = 1);
 
 private:
     /**

@@ -19,6 +19,7 @@
         <file>Images/meteorBig.png</file>
         <file>Images/meteorSmall.png</file>
         <file>Images/enemyShipBlue.png</file>
+        <file>Images/powerup_life.gif</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>Fonts/venus rising rg.ttf</file>

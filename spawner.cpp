@@ -85,7 +85,7 @@ void Spawner::startSpawning() {
 
 void Spawner::spawnWave() {
     currentWave++;
-    qDebug() << "Spawnwave : " + QString::number(currentWave);
+    //qDebug() << "Spawnwave : " + QString::number(currentWave);
 
     if(currentWave < waves.size())
         timerSpawnWave->setInterval(waves[currentWave].delayBeforeNextWave);
@@ -102,7 +102,7 @@ void Spawner::spawnWave() {
 
 void Spawner::spawnEnemy(){
     enemy_count++;
-    qDebug() << "Spawnenemy : " + QString::number(enemy_count);
+    //qDebug() << "Spawnenemy : " + QString::number(enemy_count);
     if(enemy_count < waves[currentWave].quantity && game->getOnGoing()) {
         Enemy * enemy = chooseEnemyFromType(waves[currentWave].type);
         game->scene->addItem(enemy);

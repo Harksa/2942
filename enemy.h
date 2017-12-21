@@ -34,6 +34,11 @@ private:
      */
     void TimerAvancer();
 
+    /**
+     * @brief spawnPowerUp Gère l'apparition ou non d'un powerup à la mort du vaisseau.
+     */
+    void spawnPowerUp();
+
 protected:
     /**
      * @brief life La quantité de vie que ce vaisseau posséde.

@@ -24,7 +24,7 @@ HealthUI::HealthUI(QGraphicsItem *parent){
 
 void HealthUI::healthChanged(int i){
     if(health > 0)
-    health -= i;
+    health += i;
     setPlainText("Health : " + QString::number(health));
 
     if(health <= 0) {
