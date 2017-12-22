@@ -89,6 +89,10 @@ public:
      * @brief startSpawning La fonction permettant de démarrer les vagues ennemis.
      */
     void startSpawning();
+
+    int getCurrentWave() const { return currentWave; }
+
+    int getTotalWave() const {return waves.size(); }
 private:
     /**
      * @brief waves La liste des vagues.

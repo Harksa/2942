@@ -64,6 +64,11 @@ public:
 	HighScores * highscores;
 
     /**
+     * @brief endLevel Timer vérifiant la fin du niveau.
+     */
+    QTimer * endLevel;
+
+    /**
      * @brief onGoing Permet de vérifier si le jeu est en cours ou non.
      */
 	bool onGoing;
@@ -101,6 +106,18 @@ private:
      * @param event Le clique de la souris.
      */
     void mousePressEvent(QMouseEvent *event);
+
+    /**
+     * @brief checkTypeId Permet de vérifier le typeId d'un graphic item.
+     * @param item Vrai si c'est un enemi, faux sinon.
+     */
+    bool checkTypeId(const QGraphicsItem &item);
+
+private slots:
+    /**
+     * @brief checkEndLevel Vérifie que le joueur est bien gagné le jeu.
+     */
+    void checkEndLevel();
 
 };
 

@@ -1,6 +1,12 @@
 #include "game.h"
 
+#include <QList>
+
 #include "enemy.h"
+#include "enemygreen.h"
+#include "enemyred.h"
+#include "enemyblue.h"
+#include "spacerock.h"
 #include "constants.h"
 
 Game::Game(QWidget *parent){
@@ -57,6 +63,22 @@ void Game::mousePressEvent(QMouseEvent *event) {
     Q_UNUSED(event);
 }
 
+void Game::checkEndLevel(){
+    if(spawner->getCurrentWave() >= spawner->getTotalWave()){
+        QList<QGraphicsItem *> itemsInScene = scene->items();
+
+        for(int i = 0 ; i < itemsInScene.size() ; i++) {
+            //Si collision avec object de type Enemy
+            if(checkTypeId(*(itemsInScene[i]))) {
+                return;
+            }
+        }
+
+        game_over();
+        endLevel->stop();
+    }
+}
+
 //Ajout de "Play" & "High Scores"
 void Game::show_start_menu(){
 	add_menu("Play", scene->width() * 2 / 5, scene->height() * 2 / 6 , 20);
@@ -89,6 +111,10 @@ void Game::launch_game(/*paramètres de niveau*/){
     //Spawner d'ennemis.
     spawner = new Spawner();
     spawner->startSpawning();
+
+    endLevel = new QTimer();
+    connect(endLevel, SIGNAL(timeout()), this, SLOT(checkEndLevel()));
+    endLevel->start(500);
 }
 
 void Game::game_over(){
@@ -116,4 +142,15 @@ void Game::add_menu(QString texte, int posX, int posY, int fontHeight){
 
 bool Game::getOnGoing(){
 	return onGoing;
+}
+
+bool Game::checkTypeId(const QGraphicsItem &item) {
+    if(typeid(item) == typeid(EnemyGreen) ||
+            typeid(item) == typeid(EnemyRed) ||
+            typeid(item) == typeid(SpaceRock) ||
+            typeid(item) == typeid(EnemyBlue)
+      )
+        return true;
+
+    return false;
 }
