@@ -24,7 +24,7 @@ EnemyBlue::EnemyBlue(int pos_x) : EnemyFiring(pos_x){
 
 void EnemyBlue::fire(){
     EnemyBullet * bullet = new EnemyBullet(bulletSpeed, bulletDamage);
-    bullet->setPos(x() + pixmap().width() / 2 - bullet->pixmap().width() / 2, y() - pixmap().height() / 2);
+    bullet->setPos(x() + pixmap().width() / 2 - bullet->pixmap().width() / 2, y() + pixmap().height());
     scene()->addItem(bullet);
 }
 
