@@ -108,6 +108,12 @@ private:
     void mousePressEvent(QMouseEvent *event);
 
     /**
+     * @brief keyPressEvent Gére l'appuie des touches du clavier.
+     * @param event La touche appuyé par le joueur.
+     */
+    void keyPressEvent(QKeyEvent *event);
+
+    /**
      * @brief checkTypeId Permet de vérifier le typeId d'un graphic item.
      * @param item Vrai si c'est un enemi, faux sinon.
      */

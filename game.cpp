@@ -63,6 +63,12 @@ void Game::mousePressEvent(QMouseEvent *event) {
     Q_UNUSED(event);
 }
 
+void Game::keyPressEvent(QKeyEvent *event){
+    if(event->key() == Qt::Key_Escape) {
+        this->close();
+    }
+}
+
 void Game::checkEndLevel(){
     if(spawner->getCurrentWave() >= spawner->getTotalWave()){
         QList<QGraphicsItem *> itemsInScene = scene->items();
