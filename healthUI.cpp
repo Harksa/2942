@@ -8,6 +8,7 @@
 extern Game * game;
 
 HealthUI::HealthUI(QGraphicsItem *parent){
+    //Toujours afficher devant tout les objets du jeu.
     setZValue(1);
 
     health = 3;

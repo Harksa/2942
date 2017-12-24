@@ -17,6 +17,11 @@
 
 extern Game * game;
 
+/*
+ * Structure du fichier spawner :
+ * Type, nombre, position, Timer pour la vague suivante.
+ */
+
 Spawner::Spawner(QObject *parent) : QObject(parent){
 
     QFile file(":/spawners/vagues.spwn");

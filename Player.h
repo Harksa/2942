@@ -6,6 +6,7 @@
 #include <QObject>
 #include <QMediaPlayer>
 #include <QTimer>
+#include <QMovie>
 
 #include "playerstats.h"
 #include "sprite.h"
@@ -44,7 +45,16 @@ public:
      */
     void decreaseHealth(int i = 1);
 
+    /**
+     * @brief increaseHealth Augmente la vie du joueur.
+     * @param i La vie gagné.
+     */
     void increaseHealth(int i = 1);
+
+    /**
+     * @brief startBlink Fait clignoter le joueur lorsqu'il se fait toucher.
+     */
+    void startBlink();
 
 signals:
     /**
@@ -54,6 +64,15 @@ signals:
     void healthChanged(int i = 1);
 
 private:
+
+    /**
+     * @brief normal Animation du joueur lorsqu'il ne change pas de direction.
+     * @brief left Animation lorsqu'il se dirige vers la gauche.
+     * @brief right Animation lorsqu'il se dirige vers la droite.
+     * @brief blinking Animation lorsque le joueur se fait toucher.
+     */
+    QMovie *normal, *left, *right, *blinking;
+
     /**
      * @brief posX La position X du joueur.
      * @brief posY La position Y du joueur.
@@ -64,6 +83,11 @@ private:
      * @brief playerStats Les statistiques du vaisseau du joueur.
      */
     PlayerStats playerStats;
+
+    /**
+     * @brief isInvulnerable Est-ce que le joueur est invulnérable.
+     */
+    bool isInvulnerable;
 
     /**
      * @brief bulletSound Le son du bullet du joueur.
@@ -110,6 +134,11 @@ private slots:
      * @brief makeFirePossible Permet au joueur de tirer à nouveau en changeant le boolean canFire à true.
      */
     void makeFirePossible();
+
+    /**
+     * @brief stopBlink Fait arrêter de clignoter le joueur.
+     */
+    void stopBlink();
 };
 
 #endif // MYRECT_H

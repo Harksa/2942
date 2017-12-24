@@ -29,12 +29,10 @@ void Enemy::DestroyWhenContactWithPlayer() {
     QList<QGraphicsItem *> colliding_items = collidingItems();
 
     for(int i = 0 ; i < colliding_items.size() ; i++) {
-        //Si collision avec object de type Enemy
         if(checkCollisionWithPlayer(*(colliding_items[i]))) {
             dynamic_cast<Player*>(colliding_items[i])->decreaseHealth();
             explode();
-
-            return; //Ne pas continuer le code si collision.
+            return;
         }
     }
 }

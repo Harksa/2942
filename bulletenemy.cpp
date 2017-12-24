@@ -30,7 +30,6 @@ void EnemyBullet::move() {
     }
 }
 
-
 bool EnemyBullet::CheckCollision(const QGraphicsItem &item) {
     if(typeid(item) == typeid(Player))
         return true;

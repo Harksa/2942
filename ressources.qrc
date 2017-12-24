@@ -9,7 +9,6 @@
         <file>Images/Background/starBackground.png</file>
         <file>Images/enemyShip.png</file>
         <file>Images/laserGreen.png</file>
-        <file>Images/laserGreenShot.png</file>
         <file>Images/enemyShipRed.png</file>
         <file>Images/ship.gif</file>
         <file>Images/shipLeft.gif</file>
@@ -21,6 +20,7 @@
         <file>Images/enemyShipBlue.png</file>
         <file>Images/powerup_life.gif</file>
         <file>Images/powerup_score.gif</file>
+        <file>Images/ship_blink.gif</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>Fonts/venus rising rg.ttf</file>

@@ -12,7 +12,6 @@ Score::Score(QGraphicsItem *parent): QGraphicsTextItem(parent){
 
     score = 0;
 
-    //Afficher le texte.
     setPlainText("Score : " + QString::number(score));
     setDefaultTextColor(Qt::white);
 

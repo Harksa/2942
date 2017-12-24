@@ -68,7 +68,6 @@ void Game::checkEndLevel(){
         QList<QGraphicsItem *> itemsInScene = scene->items();
 
         for(int i = 0 ; i < itemsInScene.size() ; i++) {
-            //Si collision avec object de type Enemy
             if(checkTypeId(*(itemsInScene[i]))) {
                 return;
             }

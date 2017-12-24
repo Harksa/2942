@@ -10,9 +10,17 @@
 extern Game * game;
 
 Player::Player(QGraphicsItem *parent): Sprite(":/pictures/Images/ship.gif", 10, parent){
+    //Son du canon
     bulletSound = new QMediaPlayer(this);
     bulletSound->setMedia(QUrl("qrc:/sounds/Sounds/laser.mp3"));
 
+    //Attribution des animations
+    normal = animation;
+    left = new QMovie(":/pictures/Images/shipLeft.gif");
+    right = new QMovie(":/pictures/Images/shipRight.gif");
+    blinking = new QMovie(":/pictures/Images/ship_blink.gif");
+
+    //Spawn
     setPixmap(animation->currentPixmap());
     posX = width_scene / 2 - 20, posY = height_scene - 200;
     setPos(posX, posY);
@@ -29,6 +37,7 @@ Player::Player(QGraphicsItem *parent): Sprite(":/pictures/Images/ship.gif", 10, 
     bulletDamages = 1;
 
     canFire = true;
+    isInvulnerable = false;
 }
 
 
@@ -90,8 +99,12 @@ void Player::KeysProcessing(){
 }
 
 void Player::decreaseHealth(int i) {
-    playerStats.health -= i;
-    emit healthChanged(-i);
+    if(!isInvulnerable) {
+        isInvulnerable = true;
+        playerStats.health -= i;
+        startBlink();
+        emit healthChanged(-i);
+    }
 }
 
 void Player::increaseHealth(int i){
@@ -99,24 +112,29 @@ void Player::increaseHealth(int i){
     emit healthChanged(i);
 }
 
+void Player::startBlink(){
+    animation = blinking;
+    QTimer::singleShot(1000, this, SLOT(stopBlink()));
+}
+
 void Player::changeAnimation(){
     if(keysPressed.contains(Qt::Key_Left)) {
         if(!TurnDone) {
-            animation = new QMovie(":/pictures/Images/shipLeft.gif");
+            animation = left;
             TurnDone = true;
         }
     }
 
     if (keysPressed.contains(Qt::Key_Right)) {
         if(!TurnDone) {
-            animation = new QMovie(":/pictures/Images/shipRight.gif");
+            animation = right;
             TurnDone = true;
         }
     }
 
     if(!keysPressed.contains(Qt::Key_Left) && !keysPressed.contains(Qt::Key_Right)) {
         if(TurnDone) {
-            animation = new QMovie(":/pictures/Images/ship.gif");
+            animation = normal;
             TurnDone = false;
         }
     }
@@ -128,3 +146,7 @@ void Player::makeFirePossible() {
     canFire = true;
 }
 
+void Player::stopBlink(){
+    animation = normal;
+    isInvulnerable = false;
+}
