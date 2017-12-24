@@ -70,8 +70,10 @@ private:
      * @brief left Animation lorsqu'il se dirige vers la gauche.
      * @brief right Animation lorsqu'il se dirige vers la droite.
      * @brief blinking Animation lorsque le joueur se fait toucher.
+     * @brief blinking_left Animation lorsque le joueur se fait toucher et se déplace vers la gauche.
+     * @brief blinking_right Animation lorsque le joueur se fait toucheret se déplace vers la droite.
      */
-    QMovie *normal, *left, *right, *blinking;
+    QMovie *normal, *left, *right, *blinking, *blinking_left, * blinking_right;
 
     /**
      * @brief posX La position X du joueur.

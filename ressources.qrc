@@ -21,6 +21,8 @@
         <file>Images/powerup_life.gif</file>
         <file>Images/powerup_score.gif</file>
         <file>Images/ship_blink.gif</file>
+        <file>Images/ship_blinkLeft.gif</file>
+        <file>Images/ship_blinkRight.gif</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>Fonts/venus rising rg.ttf</file>

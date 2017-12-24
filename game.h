@@ -87,7 +87,7 @@ public :
     /**
      * @brief game_over Gère la fin du jeu.
      */
-	void game_over();
+    void game_over();
 
     /**
      * @brief add_menu Rajoute un item avec le texte et l'emplacement désiré.
@@ -111,7 +111,7 @@ private:
      * @brief keyPressEvent Gére l'appuie des touches du clavier.
      * @param event La touche appuyé par le joueur.
      */
-    void keyPressEvent(QKeyEvent *event);
+    //void keyPressEvent(QKeyEvent *event);
 
     /**
      * @brief checkTypeId Permet de vérifier le typeId d'un graphic item.

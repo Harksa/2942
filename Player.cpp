@@ -19,6 +19,8 @@ Player::Player(QGraphicsItem *parent): Sprite(":/pictures/Images/ship.gif", 10, 
     left = new QMovie(":/pictures/Images/shipLeft.gif");
     right = new QMovie(":/pictures/Images/shipRight.gif");
     blinking = new QMovie(":/pictures/Images/ship_blink.gif");
+    blinking_left = new QMovie(":/pictures/Images/ship_blinkLeft.gif");
+    blinking_right = new QMovie(":/pictures/Images/ship_blinkRight.gif");
 
     //Spawn
     setPixmap(animation->currentPixmap());
@@ -120,21 +122,31 @@ void Player::startBlink(){
 void Player::changeAnimation(){
     if(keysPressed.contains(Qt::Key_Left)) {
         if(!TurnDone) {
-            animation = left;
+            if(!isInvulnerable)
+                animation = left;
+            else
+                animation = blinking_left;
+
             TurnDone = true;
         }
     }
 
     if (keysPressed.contains(Qt::Key_Right)) {
         if(!TurnDone) {
-            animation = right;
+            if(!isInvulnerable)
+                animation = right;
+            else
+                animation = blinking_right;
             TurnDone = true;
         }
     }
 
     if(!keysPressed.contains(Qt::Key_Left) && !keysPressed.contains(Qt::Key_Right)) {
         if(TurnDone) {
-            animation = normal;
+            if(!isInvulnerable)
+                animation = normal;
+            else
+                animation = blinking;
             TurnDone = false;
         }
     }
